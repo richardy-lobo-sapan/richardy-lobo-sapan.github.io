@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richardy Lobo' Sapan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:      #ffffff;
+      --text:    #1a1a1a;
+      --muted:   #555555;
+      --subtle:  #888888;
+      --border:  #e0e0e0;
+      --warm:    #7a4f2e;
+      --link:    #5c3d20;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrapper {
+      display: flex;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      gap: 3.5rem;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      flex-shrink: 0;
+      width: 200px;
+      position: sticky;
+      top: 3.5rem;
+      align-self: flex-start;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 1rem;
+      border: 1px solid var(--border);
+      background: #e8ddd4;
+    }
+
+    .sidebar h1 {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+
+    .sidebar .job { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.15rem; }
+    .sidebar .location { font-size: 0.75rem; color: var(--subtle); margin-bottom: 1.2rem; }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .socials a {
+      font-size: 0.72rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .socials a:hover { color: var(--warm); border-color: var(--warm); text-decoration: none; }
+
+    .sidenav { list-style: none; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .sidenav li + li { margin-top: 0.3rem; }
+    .sidenav a { font-size: 0.8rem; color: var(--subtle); }
+    .sidenav a:hover { color: var(--warm); text-decoration: none; }
+
+    /* ── MAIN ── */
+    main { flex: 1; min-width: 0; }
+
+    section { margin-bottom: 2.8rem; }
+
+    section h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    section h3 { font-size: 0.88rem; font-weight: 500; color: var(--text); margin-bottom: 0.1rem; }
+
+    /* subsection label inside projects */
+    .project-group-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin: 1.6rem 0 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .project-group-label:first-of-type { margin-top: 0; }
+
+    p { color: var(--muted); margin-bottom: 0.8rem; font-size: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+
+    #intro p:first-child { font-size: 0.95rem; }
+
+    .resume-line { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
+
+    /* ── PREVIOUSLY ── */
+    .prev-list { list-style: none; }
+
+    .prev-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .prev-list li:last-child { border-bottom: none; }
+
+    .prev-year { flex-shrink: 0; width: 80px; color: var(--subtle); font-size: 0.78rem; padding-top: 0.05rem; }
+    .prev-text strong { font-weight: 500; color: var(--text); }
+
+    /* ── PROJECTS ── */
+    .project { margin-bottom: 1.2rem; }
+    .project-meta { font-size: 0.78rem; color: var(--subtle); margin-bottom: 0.15rem; }
+    .project-links { font-size: 0.78rem; }
+    .project-links a { margin-right: 0.6rem; color: var(--warm); }
+
+    /* ── AWARDS ── */
+    .entries { list-style: none; }
+
+    .entries li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.88rem;
+      color: var(--muted);
+      align-items: baseline;
+    }
+
+    .entries li:last-child { border-bottom: none; }
+
+    .entry-year { flex-shrink: 0; width: 40px; color: var(--subtle); font-size: 0.76rem; }
+
+    .entry-badge {
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      margin-right: 0.4rem;
+    }
+
+    .b-award    { background: #f5ece3; color: #8b5e3c; }
+    .b-research { background: #e6efe8; color: #3d6b47; }
+    .b-news     { background: #e5eaf5; color: #3a5278; }
+
+    .entry-text strong { font-weight: 500; color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+      font-size: 0.75rem;
+      color: var(--subtle);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .wrapper { flex-direction: column; gap: 2rem; padding: 2rem 1.2rem; }
+      .sidebar { width: 100%; position: static; text-align: left; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+      .avatar { width: 80px; height: 80px; margin: 0; }
+      .sidebar-info { flex: 1; }
+      .socials { justify-content: flex-start; }
+      .sidenav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <img class="avatar" src="IMG_20240918_212158_783.jpg" alt="Richardy Lobo' Sapan" />
+    <h1>Richardy Lobo' Sapan</h1>
+    <p class="job">Data Scientist &amp; AI/ML Engineer</p>
+    <p class="location">Jakarta, Indonesia</p>
+
+    <div class="socials">
+      <a href="https://github.com/richardy-lobo-sapan" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank">Scholar</a>
+    </div>
+
+    <ul class="sidenav">
+      <li><a href="#previously">Previously</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#outside">Outside Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#recognition">Awards &amp; Research</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- INTRO -->
+    <!-- FIX 1: flipped paragraph order — specific/present first, background second -->
+    <section id="intro">
+      <p>
+        I'm a data scientist and AI/ML engineer based in Jakarta, Indonesia, working as an independent
+        consultant for teams in fintech and consumer domains — helping them go from raw data to decisions
+        that actually matter, through modeling, pipelines, and dashboards that non-technical stakeholders
+        can use. I also contribute to NLP research on Southeast Asian languages in my spare time.
+        <!-- FIX 2: "love contribute" → "contribute" -->
+      </p>
+      <p>
+        I studied Mathematics at <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>,
+        graduating in 2023 — where I first realized that the most interesting problems live at the
+        intersection of math, language, and human behavior. That conviction has shaped everything I've
+        worked on since.
+      </p>
+      <p class="resume-line">
+        You can take a look at my experience on my LinkedIn <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank">here</a>. ·
+        Open for consulting, freelance, and research collaborations — feel free to reach out.
+      </p>
+    </section>
+
+    <!-- PREVIOUSLY -->
+    <section id="previously">
+      <h2>Previously</h2>
+      <ul class="prev-list">
+
+        <li>
+          <span class="prev-year">2025–now</span>
+          <div class="prev-text">
+            <strong>Data Science Freelancer</strong> — Independent Consultant ·
+            working with clients across fintech, consumer, and research domains.
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2024</span>
+          <div class="prev-text">
+            <strong>Data Analytics</strong> at
+            <a href="https://www.banksaqu.com/" target="_blank">Bank Saqu / Bank Jasa Jakarta</a>
+            (Astra &amp; WeLab Group)
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2023–now</span>
+          <div class="prev-text">
+            <strong>NLP Research Contributor</strong> at
+            <a href="https://seacrowd.github.io/" target="_blank">SEACROWD</a> —
+            building open-source NLP resources for Southeast Asian languages
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2023</span>
+          <div class="prev-text">
+            <strong>Digital Consulting Analyst</strong> at Advisia
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2023</span>
+          <div class="prev-text">
+            <strong>Product Operations Intern</strong> at
+            <a href="https://deall.com/" target="_blank">Deall Jobs</a> (YC 2022)
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2022–23</span>
+          <div class="prev-text">
+            <strong>Data Scientist Intern</strong> at Home Credit Indonesia —
+            project-based intern with Rakamin
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2022</span>
+          <div class="prev-text">
+            <strong>Big Data Analytics Intern</strong> at Kimia Farma —
+            project-based intern with Rakamin
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2022</span>
+          <div class="prev-text">
+            <strong>Business Analyst Intern</strong> at
+            <a href="https://dailysocial.id/" target="_blank">DailySocial.id</a>
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2021–22</span>
+          <div class="prev-text">
+            <strong>Product Management Intern</strong> at
+            <a href="https://sejutacita.id/" target="_blank">SejutaCita</a> (YC 2022)
+          </div>
+        </li>
+
+        <li>
+          <span class="prev-year">2019–23</span>
+          <div class="prev-text">
+            🎓 <strong>B.Sc. Mathematics</strong> —
+            <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>.
+            Thesis on NLP &amp; Twitter sentiment analysis of football fan bases.
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- INTERESTS -->
+    <section id="interests">
+      <h2>Interests</h2>
+
+      <p>
+        I'm drawn to <strong>natural language processing</strong> — specifically how we can build models
+        that understand the nuances of Southeast Asian languages, which are still deeply underrepresented
+        in AI research. Working with SEACROWD made this feel less like an academic concern and more like
+        something that actually matters for the hundreds of millions of people whose languages rarely
+        appear in a training dataset.
+      </p>
+      <p>
+        I'm also genuinely interested in <strong>applied ML in finance</strong>: credit risk modeling,
+        behavioral prediction, and how data can help build fairer systems for people historically
+        excluded from financial services.
+      </p>
+      <!-- FIX 6: added closing sentence + period -->
+      <p>
+        Lately I've been going deep into <strong>large language models</strong> — not just using them, but
+        understanding how to build real systems around them. I've been working through a personal roadmap:
+        starting from raw API calls and conversation memory, building up to RAG systems that let you talk to
+        your own documents, then AI agents that can reason across tools and live data sources. The project I'm
+        most excited about is a <strong>Fintech LLM Analyst</strong> — an AI that takes plain-English
+        questions and translates them into SQL queries against real financial data. It sits right at the
+        intersection of everything I care about: language, data, and decisions that affect real people.
+        The goal is to have five production-ready LLM projects shipped, each one building on the last —
+        all of it pointing toward the same question: what does it actually look like when AI works for
+        the people using it.
+      </p>
+    </section>
+
+    <!-- OUTSIDE WORK -->
+    <section id="outside">
+      <h2>Outside of Work</h2>
+      <p>
+        I play a lot of games — and I mean a lot. My range is embarrassingly wide: one moment I'm sweating
+        in <strong>CS</strong> or grinding ranked in <strong>MLBB</strong>, the next I'm in
+        <strong>Roblox</strong> without a hint of shame. A big part of what I play these days is honestly
+        influenced by <a href="https://www.youtube.com/@WindahBasudara" target="_blank">Windah Basudara</a>
+        — if he touches it, there's a good chance I end up trying it. I also watch a fair amount of gaming
+        streams, mostly his. It's the kind of content that makes you want to close your laptop and just play.
+      </p>
+      <p>
+        I watch anime. My favorite is <strong>One Piece</strong> — I've accepted that it will outlive
+        most of my life decisions. I don't know when it ends, but I already know I'll be a little sad when
+        it does. My favorite character is Buggy, which I think says a lot about me and I'm fine with that.
+        Outside the big three, the shows that genuinely stuck with me are <strong>Frieren</strong>,
+        <strong>Saiki K</strong>, and <strong>Bocchi the Rock</strong> — three very different things,
+        somehow all comfort watches.
+      </p>
+      <p>
+        I also follow football. I support <strong>Manchester United</strong>, which at this point is less
+        a hobby and more a test of character. We're not great. We've been not great for a while. But here
+        we are.
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <!-- FIX 9 & 10: split into tiers, SEACrowd added -->
+      <p class="project-group-label">Selected Work</p>
+
+      <div class="project">
+        <h3>Fintech Segmentation API</h3>
+        <p class="project-meta">FastAPI · Docker · Railway · GitHub Actions · 2024</p>
+        <p>
+          A production-ready REST API serving a KMeans behavioral segmentation model trained on
+          278,932 transactions from an Indonesian digital payment platform. The model classifies
+          users into 4 segments — Gaming Casuals, Active Explorers, Established Regulars, and
+          Food-Focused Occasionals — across 31 behavioral features. Fully Dockerized with a
+          CI/CD pipeline via GitHub Actions and deployed live on Railway.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/fintech-segmentation-api" target="_blank">GitHub</a>
+          <a href="https://fintech-segmentation-api-production.up.railway.app/docs" target="_blank">Live API</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Fintech Behavioral Segmentation</h3>
+        <p class="project-meta">Python · Scikit-learn · Pandas · 2024</p>
+        <p>
+          The research side of the segmentation work — customer clustering on fintech transaction
+          data to identify distinct behavioral patterns. Feature engineering across spending habits,
+          merchant diversity, temporal patterns, and payment behavior, feeding into the KMeans model
+          that eventually became the deployed API above.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/fintech-behavioral-segmentation" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Olist Analytics — dbt + BigQuery</h3>
+        <p class="project-meta">dbt · BigQuery · SQL · 2024</p>
+        <p>
+          An end-to-end data pipeline on the Olist Brazilian e-commerce dataset, modeled into a
+          proper star schema with staging, intermediate, and mart layers. Built to practice production
+          data modeling standards — the same BigQuery mart tables that feed into the AI agent project
+          currently in progress.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/olist-analytics-dbt" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Face Recognition — Computer Vision</h3>
+        <p class="project-meta">Python · OpenCV · 2022</p>
+        <p>
+          A real-time face recognition system built from scratch, covering face detection, face
+          matching, and identity classification. One of my earlier projects — the point where I
+          first realized that making a computer see things was way more interesting than I expected.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/face-recognition-computer-vision" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <!-- FIX 10: SEACrowd dataloader added -->
+      <div class="project">
+        <h3>SEA Dataset Dataloader — SEACROWD</h3>
+        <p class="project-meta">HuggingFace · NLP · Open Source · 2023–present</p>
+        <p>
+          Open-source contribution to the SEACROWD initiative — building standardized HuggingFace
+          dataset dataloaders for Southeast Asian language datasets, alongside dataset documentation
+          covering licensing, size, language and dialect metadata, and annotation methods. This work
+          is part of the broader research effort that led to the SEA-VL paper at ACL 2025.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/SEACrowd" target="_blank">GitHub (SEACrowd org)</a>
+        </div>
+      </div>
+
+      <!-- FIX 9: earlier work separated -->
+      <p class="project-group-label">Earlier Work</p>
+
+      <div class="project">
+        <h3>Twitter Sentiment Analysis — Football Fan Bases</h3>
+        <p class="project-meta">NLP · Python · Undergraduate Thesis · 2023</p>
+        <p>
+          Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and
+          FC Barcelona fan communities. Applied text preprocessing, lexicon-based methods, and
+          ML classifiers on scraped Twitter data.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Stock Trading Robot</h3>
+        <p class="project-meta">LSTM · Mathematical Modeling · Jupyter Notebook · 2022</p>
+        <p>
+          An automated stock trading agent built for a mathematical modeling course. Uses LSTM
+          to predict stock prices up to ten days ahead and recommends whether to buy, sell, or hold.
+          Includes a full written report and presentation decks.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/Stock-Trading-Robot" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AWARDS, RESEARCH, NEWS -->
+    <section id="recognition">
+      <h2>Awards, Research &amp; News</h2>
+      <ul class="entries">
+
+        <li>
+          <span class="entry-year">2025</span>
+          <div>
+            <span class="entry-badge b-research">Research</span>
+            <strong>SEA-VL: Multicultural Vision-Language Dataset for Southeast Asia</strong><br/>
+            Co-author. Cahyawijaya et al., <em>ACL 2025 (Long Papers)</em>.
+            Contributed to dataset preprocessing and documentation.
+            <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank">[ACL Anthology]</a>
+          </div>
+        </li>
+
+        <li>
+          <span class="entry-year">2023</span>
+          <div>
+            <span class="entry-badge b-award">Award</span>
+            <strong>Most Outstanding Student — Mathematics Dept., UI</strong><br/>
+            Recognized out of 600+ students.
+          </div>
+        </li>
+
+        <li>
+          <span class="entry-year">2022</span>
+          <div>
+            <span class="entry-badge b-award">Award</span>
+            <strong>1st Runner Up — ASEAN Data Science Challenge 2022</strong><br/>
+            Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.
+          </div>
+        </li>
+
+        <li>
+          <span class="entry-year">2022</span>
+          <div>
+            <span class="entry-badge b-award">Award</span>
+            <strong>1st Place — Ganesha Student Innovation Summit Challenge 2022</strong><br/>
+            Outperformed 100+ individual participants and 10 finalist teams.
+          </div>
+        </li>
+
+        <li>
+          <span class="entry-year">2021</span>
+          <div>
+            <span class="entry-badge b-award">Award</span>
+            <strong>1st Winner — International Youth Summit for Renewable Energy 2021</strong><br/>
+            Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.
+          </div>
+        </li>
+
+        <li>
+          <span class="entry-year">2021</span>
+          <div>
+            <span class="entry-badge b-award">Scholarship</span>
+            <strong>Dato' Dr. Low Tuck Kwong Scholarship</strong>
+          </div>
+        </li>
+
+        <!--
+        <li>
+          <span class="entry-year">20XX</span>
+          <div>
+            <span class="entry-badge b-news">News</span>
+            <strong>Article or Feature Title</strong><br/>
+            Publication name. <a href="#">[Link]</a>
+          </div>
+        </li>
+        -->
+
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<!-- FIX 8: year updated to 2026 -->
+<footer>
+  © 2026 Richardy Lobo' Sapan · Built with plain HTML &amp; CSS ·
+  Last updated: May 2026
+</footer>
+
+</body>
+</html>
