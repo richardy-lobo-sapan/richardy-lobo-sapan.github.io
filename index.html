@@ -43,7 +43,7 @@
       color: var(--accent-d);
     }
 
-    /* ─────────────────── LAYOUT ─────────────────── */
+    /* ─── LAYOUT ─── */
     .wrapper {
       display: flex;
       max-width: 980px;
@@ -52,7 +52,7 @@
       gap: 3.5rem;
     }
 
-    /* ─────────────────── SIDEBAR ─────────────────── */
+    /* ─── SIDEBAR ─── */
     .sidebar {
       flex-shrink: 0;
       width: 196px;
@@ -67,133 +67,143 @@
     }
 
     .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 0.9rem;
+      width: 120px; height: 120px;
+      border-radius: 50%; object-fit: cover;
+      display: block; margin: 0 auto 0.9rem;
       border: 2px solid var(--border-d);
       background: #e8ddd4;
     }
 
     .sidebar h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.3;
+      font-size: 1rem; font-weight: 400;
+      color: var(--text); line-height: 1.3;
       margin-bottom: 0.2rem;
     }
 
-    .sidebar .job  { font-size: 0.75rem; color: var(--muted);  margin-bottom: 0.1rem; }
-    .sidebar .loc  { font-size: 0.72rem; color: var(--subtle); margin-bottom: 1rem; }
+    .sidebar .job { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.1rem; }
+    .sidebar .loc { font-size: 0.72rem; color: var(--subtle); margin-bottom: 1rem; }
 
-    /* ── icon socials ── */
+    /* icon socials */
     .socials {
-      display: flex;
-      justify-content: center;
-      gap: 0.55rem;
-      margin-bottom: 1.1rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 0.55rem; margin-bottom: 1.1rem; flex-wrap: wrap;
     }
 
     .socials a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--subtle);
-      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px;
+      border: 1px solid var(--border); border-radius: 6px;
+      color: var(--subtle); background: var(--bg);
       transition: color 0.15s, border-color 0.15s, background 0.15s;
     }
 
     .socials a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: var(--accent-l);
-      text-decoration: none;
+      color: var(--accent); border-color: var(--accent);
+      background: var(--accent-l); text-decoration: none;
     }
 
     .socials a svg { width: 15px; height: 15px; fill: currentColor; display: block; }
 
-    /* ── sidenav ── */
-    .sidenav {
-      list-style: none;
-      border-top: 1px solid var(--border);
-      padding-top: 0.9rem;
-      text-align: left;
-    }
-
+    /* sidenav */
+    .sidenav { list-style: none; border-top: 1px solid var(--border); padding-top: 0.9rem; text-align: left; }
     .sidenav li + li { margin-top: 0.25rem; }
-
     .sidenav a {
-      font-size: 0.78rem;
-      color: var(--subtle);
-      display: block;
-      padding: 0.1rem 0.2rem;
-      border-radius: 4px;
+      font-size: 0.78rem; color: var(--subtle);
+      display: block; padding: 0.1rem 0.2rem; border-radius: 4px;
       transition: color 0.15s, background 0.12s;
     }
+    .sidenav a:hover { color: var(--accent); background: var(--accent-l); text-decoration: none; }
 
-    .sidenav a:hover {
-      color: var(--accent);
-      background: var(--accent-l);
-      text-decoration: none;
-    }
-
-    /* ─────────────────── MAIN ─────────────────── */
+    /* ─── MAIN ─── */
     main { flex: 1; min-width: 0; }
-
     section { margin-bottom: 2.8rem; }
 
-    /* section heading — fajrikoto-style: bold serif + left accent bar */
     section h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
+      font-size: 1.1rem; font-weight: 400;
       color: var(--text);
       padding-left: 0.75rem;
       border-left: 3px solid var(--accent);
-      margin-bottom: 1.1rem;
-      line-height: 1.3;
+      margin-bottom: 1.1rem; line-height: 1.3;
     }
 
+    /* uniform paragraph size — no special first-child rule */
     p { color: var(--muted); margin-bottom: 0.8rem; font-size: 0.9rem; }
     p:last-child { margin-bottom: 0; }
-    #intro p:first-child { font-size: 0.95rem; }
     .resume-line { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
 
-    /* ─────────────────── EXPERIENCE ─────────────────── */
-    .exp-list { list-style: none; }
+    /* ─── TECH STACK ─── */
+    .stack-group { margin-bottom: 0.9rem; }
+    .stack-label {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--subtle); margin-bottom: 0.4rem;
+    }
+    .stack-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .pill {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      white-space: nowrap;
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+    }
+    .pill:hover { background: var(--accent-l); border-color: var(--accent); color: var(--accent-d); }
 
+    /* ─── FEATURED IN ─── */
+    .featured-card {
+      display: flex; align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+    }
+    .featured-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(184,92,42,0.07);
+      text-decoration: none;
+    }
+    .featured-icon {
+      flex-shrink: 0; margin-top: 0.15rem;
+      width: 28px; height: 28px;
+      background: var(--accent-l); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .featured-icon svg { width: 14px; height: 14px; fill: var(--accent); }
+    .featured-body { flex: 1; min-width: 0; }
+    .featured-title {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--text); line-height: 1.4;
+      margin-bottom: 0.15rem;
+    }
+    .featured-source {
+      font-size: 0.72rem; color: var(--subtle);
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-list { list-style: none; }
     .exp-list li {
-      display: flex;
-      gap: 1rem;
+      display: flex; gap: 1rem;
       padding: 0.5rem 0;
       border-bottom: 1px dashed var(--border);
-      font-size: 0.88rem;
-      color: var(--muted);
+      font-size: 0.88rem; color: var(--muted);
     }
-
     .exp-list li:last-child { border-bottom: none; }
-
     .exp-year {
-      flex-shrink: 0;
-      width: 82px;
-      font-size: 0.76rem;
-      color: var(--year-col);
-      font-weight: 500;
-      padding-top: 0.05rem;
+      flex-shrink: 0; width: 82px;
+      font-size: 0.76rem; color: var(--year-col);
+      font-weight: 500; padding-top: 0.05rem;
     }
-
     .exp-text strong { font-weight: 500; color: var(--text); }
 
-    /* ─────────────────── PROJECTS ─────────────────── */
-    /* unified card for ALL projects */
+    /* ─── PROJECT CARDS ─── */
     .project-card {
       margin-bottom: 1rem;
       padding: 0.85rem 1rem;
@@ -203,98 +213,63 @@
       background: var(--surface);
       transition: border-color 0.15s, box-shadow 0.15s;
     }
-
     .project-card:hover {
       border-color: var(--accent);
       box-shadow: 0 2px 10px rgba(184,92,42,0.08);
     }
-
     .project-card h3 {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.08rem;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--text); margin-bottom: 0.3rem;
+    }
+    .project-card p { margin-bottom: 0.4rem; font-size: 0.875rem; }
+    .project-card p:last-child { margin-bottom: 0; }
+
+    /* tech pills inside project cards — smaller, tighter */
+    .project-pills { display: flex; flex-wrap: wrap; gap: 0.28rem; margin-bottom: 0.45rem; }
+    .project-pills .pill {
+      font-size: 0.67rem;
+      padding: 0.12rem 0.45rem;
+      background: var(--bg);
     }
 
-    .project-meta {
-      font-size: 0.76rem;
-      color: var(--subtle);
-      margin-bottom: 0.35rem;
-    }
+    .project-links { font-size: 0.76rem; margin-top: 0.4rem; }
+    .project-links a { margin-right: 0.65rem; color: var(--accent); font-weight: 500; }
 
-    .project-card p {
-      margin-bottom: 0;
-      font-size: 0.875rem;
-    }
-
-    .project-links {
-      font-size: 0.76rem;
-      margin-top: 0.4rem;
-    }
-
-    .project-links a {
-      margin-right: 0.65rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* ─────────────────── AWARDS ─────────────────── */
+    /* ─── AWARDS ─── */
     .entries { list-style: none; }
-
     .entries li {
-      display: flex;
-      gap: 1rem;
+      display: flex; gap: 1rem;
       padding: 0.5rem 0;
       border-bottom: 1px dashed var(--border);
-      font-size: 0.88rem;
-      color: var(--muted);
+      font-size: 0.88rem; color: var(--muted);
       align-items: baseline;
     }
-
     .entries li:last-child { border-bottom: none; }
-
-    .entry-year {
-      flex-shrink: 0;
-      width: 40px;
-      font-size: 0.76rem;
-      color: var(--year-col);
-      font-weight: 500;
-    }
-
+    .entry-year { flex-shrink: 0; width: 40px; font-size: 0.76rem; color: var(--year-col); font-weight: 500; }
     .entry-badge {
-      flex-shrink: 0;
-      font-size: 0.63rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 0.1rem 0.4rem;
-      border-radius: 3px;
-      margin-right: 0.4rem;
+      flex-shrink: 0; font-size: 0.63rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 0.1rem 0.4rem; border-radius: 3px; margin-right: 0.4rem;
     }
-
     .b-award    { background: #f5ece3; color: #8b5e3c; }
     .b-research { background: #e6efe8; color: #3d6b47; }
-    .b-news     { background: #e5eaf5; color: #3a5278; }
-
+    .b-press    { background: #e5eaf5; color: #3a5278; }
     .entries strong { font-weight: 500; color: var(--text); }
 
-    /* ─────────────────── FOOTER ─────────────────── */
+    /* ─── FOOTER ─── */
     footer {
-      max-width: 980px;
-      margin: 0 auto;
+      max-width: 980px; margin: 0 auto;
       padding: 1.4rem 2rem 3rem;
-      font-size: 0.74rem;
-      color: var(--subtle);
+      font-size: 0.74rem; color: var(--subtle);
       border-top: 1px solid var(--border);
     }
 
-    /* ─────────────────── RESPONSIVE ─────────────────── */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       .wrapper { flex-direction: column; gap: 1.5rem; padding: 1.5rem 1rem; }
       .sidebar { width: 100%; position: static; display: flex; flex-wrap: wrap;
                  align-items: center; gap: 1rem; text-align: left; padding: 1rem; }
       .avatar  { width: 72px; height: 72px; margin: 0; }
-      .sidebar-info { flex: 1; }
       .socials { justify-content: flex-start; }
       .sidenav { display: none; }
     }
@@ -304,7 +279,7 @@
 
 <div class="wrapper">
 
-  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <!-- ═══════════ SIDEBAR ═══════════ -->
   <aside class="sidebar">
     <img class="avatar" src="IMG_20240918_212158_783.jpg" alt="Richardy Lobo' Sapan" />
     <h1>Richardy Lobo' Sapan</h1>
@@ -312,82 +287,36 @@
     <p class="loc">Jakarta, Indonesia</p>
 
     <div class="socials">
-
       <!-- GitHub -->
       <a href="https://github.com/richardy-lobo-sapan" target="_blank" title="GitHub">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303
-            3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
-            0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422
-            18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729
-            1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305
-            3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93
-            0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176
-            0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405
-            1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23
-            3.285-1.23.645 1.653.24 2.873.12 3.176.765.84
-            1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475
-            5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015
-            3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592
-            24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       </a>
-
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" title="LinkedIn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853
-            0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9
-            1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337
-            7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063
-            2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225
-            0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24
-            1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24
-            .774 23.2 0 22.222 0h.003z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-
       <!-- Google Scholar -->
       <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank" title="Google Scholar">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838
-            3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/></svg>
       </a>
-
       <!-- ResearchGate -->
       <a href="https://www.researchgate.net/profile/Richardy-Sapan" target="_blank" title="ResearchGate">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213
-            1.68a12.44 12.44 0 00-.365 3.123v.521h-1.99c-.026.56-.049 1.33-.049
-            1.877h1.973v7.82c-.05 1.928-.278 3.29-.69 4.094-.41.804-1.017
-            1.205-1.822 1.205-.61 0-1.161-.223-1.657-.67-.494-.448-.764-1.015-.81-1.703h-.08a3.43
-            3.43 0 01-.528 1.907c-.337.49-.752.855-1.245 1.1a3.44 3.44 0
-            01-1.6.365c-1.148 0-2.063-.435-2.746-1.304C4.35 19.516 4
-            18.282 4 16.683c0-1.618.388-2.9 1.163-3.845.775-.944 1.795-1.416
-            3.06-1.416.793 0 1.476.182 2.049.547.573.365.993.904 1.26
-            1.617h.065v-1.86h2.05v7.68c0 .597.127 1.063.38 1.396.253.334.613.5
-            1.08.5.54 0 .965-.216 1.278-.648.312-.432.468-1.026.468-1.78V9.766h2.087c.026-.547.049-1.317.049-1.877h-2.087V6.384c0-1.16.133-1.98.4-2.46.267-.48.707-.72
-            1.32-.72.357 0 .71.066 1.063.197l.5-1.79A5.4 5.4 0
-            0019.586 0zM8.4 13.444c-.633 0-1.13.277-1.493.83-.362.553-.543
-            1.356-.543 2.41 0 1.01.178 1.79.535 2.34.357.55.851.824
-            1.483.824.63 0 1.127-.275 1.49-.824.363-.55.545-1.33.545-2.34
-            0-1.054-.182-1.857-.545-2.41-.363-.553-.86-.83-1.472-.83z"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.44 12.44 0 00-.365 3.123v.521h-1.99c-.026.56-.049 1.33-.049 1.877h1.973v7.82c-.05 1.928-.278 3.29-.69 4.094-.41.804-1.017 1.205-1.822 1.205-.61 0-1.161-.223-1.657-.67-.494-.448-.764-1.015-.81-1.703h-.08a3.43 3.43 0 01-.528 1.907c-.337.49-.752.855-1.245 1.1a3.44 3.44 0 01-1.6.365c-1.148 0-2.063-.435-2.746-1.304C4.35 19.516 4 18.282 4 16.683c0-1.618.388-2.9 1.163-3.845.775-.944 1.795-1.416 3.06-1.416.793 0 1.476.182 2.049.547.573.365.993.904 1.26 1.617h.065v-1.86h2.05v7.68c0 .597.127 1.063.38 1.396.253.334.613.5 1.08.5.54 0 .965-.216 1.278-.648.312-.432.468-1.026.468-1.78V9.766h2.087c.026-.547.049-1.317.049-1.877h-2.087V6.384c0-1.16.133-1.98.4-2.46.267-.48.707-.72 1.32-.72.357 0 .71.066 1.063.197l.5-1.79A5.4 5.4 0 0019.586 0zM8.4 13.444c-.633 0-1.13.277-1.493.83-.362.553-.543 1.356-.543 2.41 0 1.01.178 1.79.535 2.34.357.55.851.824 1.483.824.63 0 1.127-.275 1.49-.824.363-.55.545-1.33.545-2.34 0-1.054-.182-1.857-.545-2.41-.363-.553-.86-.83-1.472-.83z"/></svg>
       </a>
-
     </div>
 
     <ul class="sidenav">
       <li><a href="#experience">Experience</a></li>
       <li><a href="#interests">Interests</a></li>
+      <li><a href="#stack">Tech Stack</a></li>
       <li><a href="#outside">Outside Work</a></li>
       <li><a href="#recognition">Awards &amp; Research</a></li>
+      <li><a href="#featured">Featured In</a></li>
       <li><a href="#projects">Projects</a></li>
     </ul>
   </aside>
 
-  <!-- ═══════════════ MAIN ═══════════════ -->
+  <!-- ═══════════ MAIN ═══════════ -->
   <main>
 
     <!-- INTRO -->
@@ -416,89 +345,46 @@
     <section id="experience">
       <h2>Experience</h2>
       <ul class="exp-list">
-
         <li>
           <span class="exp-year">2025 — now</span>
-          <div class="exp-text">
-            <strong>Independent AI/ML Engineer</strong> — building a portfolio of production LLM systems
-            while consulting for clients across fintech and consumer domains.
-          </div>
+          <div class="exp-text"><strong>Independent AI/ML Engineer</strong> — building a portfolio of production LLM systems while consulting for clients across fintech and consumer domains.</div>
         </li>
-
         <li>
           <span class="exp-year">2024</span>
-          <div class="exp-text">
-            <strong>Data Analytics</strong> at
-            <a href="https://www.banksaqu.com/" target="_blank">Bank Saqu / Bank Jasa Jakarta</a>
-            (Astra &amp; WeLab Group)
-          </div>
+          <div class="exp-text"><strong>Data Analytics</strong> at <a href="https://www.banksaqu.com/" target="_blank">Bank Saqu / Bank Jasa Jakarta</a> (Astra &amp; WeLab Group)</div>
         </li>
-
         <li>
           <span class="exp-year">2023 — now</span>
-          <div class="exp-text">
-            <strong>NLP Research Contributor</strong> at
-            <a href="https://seacrowd.github.io/" target="_blank">SEACROWD</a> —
-            building open-source NLP resources for Southeast Asian languages
-          </div>
+          <div class="exp-text"><strong>NLP Research Contributor</strong> at <a href="https://seacrowd.github.io/" target="_blank">SEACROWD</a> — building open-source NLP resources for Southeast Asian languages</div>
         </li>
-
         <li>
           <span class="exp-year">2023</span>
-          <div class="exp-text">
-            <strong>Digital Consulting Analyst</strong> at Advisia
-          </div>
+          <div class="exp-text"><strong>Digital Consulting Analyst</strong> at Advisia</div>
         </li>
-
         <li>
           <span class="exp-year">2023</span>
-          <div class="exp-text">
-            <strong>Product Operations Intern</strong> at
-            <a href="https://deall.com/" target="_blank">Deall Jobs</a> (YC 2022)
-          </div>
+          <div class="exp-text"><strong>Product Operations Intern</strong> at <a href="https://deall.com/" target="_blank">Deall Jobs</a> (YC 2022)</div>
         </li>
-
         <li>
           <span class="exp-year">2022 — 23</span>
-          <div class="exp-text">
-            <strong>Data Scientist Intern</strong> at Home Credit Indonesia —
-            project-based intern with Rakamin
-          </div>
+          <div class="exp-text"><strong>Data Scientist Intern</strong> at Home Credit Indonesia — project-based intern with Rakamin</div>
         </li>
-
         <li>
           <span class="exp-year">2022</span>
-          <div class="exp-text">
-            <strong>Big Data Analytics Intern</strong> at Kimia Farma —
-            project-based intern with Rakamin
-          </div>
+          <div class="exp-text"><strong>Big Data Analytics Intern</strong> at Kimia Farma — project-based intern with Rakamin</div>
         </li>
-
         <li>
           <span class="exp-year">2022</span>
-          <div class="exp-text">
-            <strong>Business Analyst Intern</strong> at
-            <a href="https://dailysocial.id/" target="_blank">DailySocial.id</a>
-          </div>
+          <div class="exp-text"><strong>Business Analyst Intern</strong> at <a href="https://dailysocial.id/" target="_blank">DailySocial.id</a></div>
         </li>
-
         <li>
           <span class="exp-year">2021 — 22</span>
-          <div class="exp-text">
-            <strong>Product Management Intern</strong> at
-            <a href="https://sejutacita.id/" target="_blank">SejutaCita</a> (YC 2022)
-          </div>
+          <div class="exp-text"><strong>Product Management Intern</strong> at <a href="https://sejutacita.id/" target="_blank">SejutaCita</a> (YC 2022)</div>
         </li>
-
         <li>
           <span class="exp-year">2019 — 23</span>
-          <div class="exp-text">
-            🎓 <strong>B.Sc. Mathematics</strong> —
-            <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>.
-            Thesis on NLP &amp; Twitter sentiment analysis of football fan bases.
-          </div>
+          <div class="exp-text">🎓 <strong>B.Sc. Mathematics</strong> — <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>. Thesis on NLP &amp; Twitter sentiment analysis of football fan bases.</div>
         </li>
-
       </ul>
     </section>
 
@@ -529,6 +415,67 @@
       </p>
     </section>
 
+    <!-- TECH STACK -->
+    <section id="stack">
+      <h2>Tech Stack</h2>
+
+      <div class="stack-group">
+        <div class="stack-label">Languages</div>
+        <div class="stack-pills">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <div class="stack-label">ML / Data Science</div>
+        <div class="stack-pills">
+          <span class="pill">Scikit-learn</span>
+          <span class="pill">XGBoost</span>
+          <span class="pill">LightGBM</span>
+          <span class="pill">SHAP</span>
+          <span class="pill">Pandas</span>
+          <span class="pill">NumPy</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Seaborn</span>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <div class="stack-label">LLM Engineering</div>
+        <div class="stack-pills">
+          <span class="pill">LangChain</span>
+          <span class="pill">LangGraph</span>
+          <span class="pill">Groq</span>
+          <span class="pill">Gemini API</span>
+          <span class="pill">ChromaDB</span>
+          <span class="pill">Langfuse</span>
+          <span class="pill">HuggingFace</span>
+          <span class="pill">Streamlit</span>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <div class="stack-label">Data Engineering</div>
+        <div class="stack-pills">
+          <span class="pill">dbt</span>
+          <span class="pill">BigQuery</span>
+          <span class="pill">Supabase</span>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <div class="stack-label">Infrastructure</div>
+        <div class="stack-pills">
+          <span class="pill">FastAPI</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Railway</span>
+          <span class="pill">GCP</span>
+          <span class="pill">GitHub Actions</span>
+        </div>
+      </div>
+    </section>
+
     <!-- OUTSIDE WORK -->
     <section id="outside">
       <h2>Outside of Work</h2>
@@ -537,16 +484,13 @@
         in <strong>CS</strong> or grinding ranked in <strong>MLBB</strong>, the next I'm in
         <strong>Roblox</strong> without a hint of shame. A big part of what I play these days is honestly
         influenced by <a href="https://www.youtube.com/@WindahBasudara" target="_blank">Windah Basudara</a>
-        — if he touches it, there's a good chance I end up trying it. I also watch a fair amount of gaming
-        streams, mostly his. It's the kind of content that makes you want to close your laptop and just play.
+        — if he touches it, there's a good chance I end up trying it.
       </p>
       <p>
         I watch anime. My favorite is <strong>One Piece</strong> — I've accepted that it will outlive
-        most of my life decisions. I don't know when it ends, but I already know I'll be a little sad when
-        it does. My favorite character is Buggy, which I think says a lot about me and I'm fine with that.
-        Outside the big three, the shows that genuinely stuck with me are <strong>Frieren</strong>,
-        <strong>Saiki K</strong>, and <strong>Bocchi the Rock</strong> — three very different things,
-        somehow all comfort watches.
+        most of my life decisions. My favorite character is Buggy, which I think says a lot about me and
+        I'm fine with that. Outside the big three, the shows that genuinely stuck with me are
+        <strong>Frieren</strong>, <strong>Saiki K</strong>, and <strong>Bocchi the Rock</strong>.
       </p>
       <p>
         I also follow football. I support <strong>Manchester United</strong>, which at this point is less
@@ -559,7 +503,6 @@
     <section id="recognition">
       <h2>Awards &amp; Research</h2>
       <ul class="entries">
-
         <li>
           <span class="entry-year">2025</span>
           <div>
@@ -570,7 +513,6 @@
             <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank">[ACL Anthology]</a>
           </div>
         </li>
-
         <li>
           <span class="entry-year">2023</span>
           <div>
@@ -579,7 +521,6 @@
             Recognized out of 600+ students.
           </div>
         </li>
-
         <li>
           <span class="entry-year">2022</span>
           <div>
@@ -588,7 +529,6 @@
             Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.
           </div>
         </li>
-
         <li>
           <span class="entry-year">2022</span>
           <div>
@@ -597,7 +537,6 @@
             Outperformed 100+ individual participants and 10 finalist teams.
           </div>
         </li>
-
         <li>
           <span class="entry-year">2021</span>
           <div>
@@ -606,7 +545,6 @@
             Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.
           </div>
         </li>
-
         <li>
           <span class="entry-year">2021</span>
           <div>
@@ -614,20 +552,54 @@
             <strong>Dato' Dr. Low Tuck Kwong Scholarship</strong>
           </div>
         </li>
-
       </ul>
     </section>
 
-    <!-- PROJECTS — all unified, at the bottom -->
+    <!-- FEATURED IN -->
+    <section id="featured">
+      <h2>Featured In</h2>
+
+      <a class="featured-card" href="https://tf.ugm.ac.id/2021/10/07/juara-1-international-youth-summit-for-renewable-energy-iysre-tahun-2021/" target="_blank">
+        <div class="featured-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        </div>
+        <div class="featured-body">
+          <div class="featured-title">Terinspirasi dari KKN — Tim yang Diketuai Mahasiswa UI Juara 1 International Youth Summit for Renewable Energy 2021</div>
+          <div class="featured-source">Universitas Gadjah Mada (tf.ugm.ac.id)</div>
+        </div>
+      </a>
+
+      <a class="featured-card" href="https://pressrelease.kontan.co.id/news/asean-foundation-dan-sap-mengu..." target="_blank">
+        <div class="featured-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <div class="featured-body">
+          <div class="featured-title">ASEAN Foundation dan SAP Mengumumkan Juara Nasional ASEAN Data Science Explorers</div>
+          <div class="featured-source">Kontan Press Release (pressrelease.kontan.co.id)</div>
+        </div>
+      </a>
+
+      <a class="featured-card" href="https://investor.id/it-and-telecommunication/304976/tiga-tim-dari-itb-dan-ui-da..." target="_blank">
+        <div class="featured-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <div class="featured-body">
+          <div class="featured-title">Tiga Tim dari ITB dan UI Jadi Juara ASEAN Data Science Explorer</div>
+          <div class="featured-source">Investor.id</div>
+        </div>
+      </a>
+    </section>
+
+    <!-- PROJECTS -->
     <section id="projects">
       <h2>Projects</h2>
 
       <div class="project-card">
         <h3>P1 · Aria — LLM Chatbot with Memory</h3>
-        <p class="project-meta">Groq · Llama 3.1 · Streamlit · LangChain · 2025</p>
-        <p>A conversational AI with persistent memory — demonstrating that the hard part of building
-          a chatbot isn't the model call, it's state management. Built on Groq for near-real-time
-          inference speed. Deployed live on Streamlit Cloud.</p>
+        <div class="project-pills">
+          <span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">LangChain</span><span class="pill">Streamlit</span><span class="pill">2025</span>
+        </div>
+        <p>A conversational AI with persistent memory — demonstrating that the hard part of building a chatbot isn't the model call, it's state management. Built on Groq for near-real-time inference. Deployed live on Streamlit Cloud.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/llm-chatbot-memory" target="_blank">GitHub</a>
           <a href="https://llm-chatbot-memory.streamlit.app" target="_blank">Live Demo</a>
@@ -636,11 +608,10 @@
 
       <div class="project-card">
         <h3>P2 · DocChat — RAG Document Q&amp;A</h3>
-        <p class="project-meta">LangChain · ChromaDB · Gemini · Streamlit · 2025</p>
-        <p>Upload any PDF and ask questions — the system retrieves the relevant chunks first, then
-          reasons on top. Taught me that RAG is fundamentally a retrieval problem wearing an AI
-          costume: chunking strategy and embedding quality matter more than the model.
-          Deployed live on Streamlit Cloud.</p>
+        <div class="project-pills">
+          <span class="pill">LangChain</span><span class="pill">ChromaDB</span><span class="pill">Gemini</span><span class="pill">Streamlit</span><span class="pill">2025</span>
+        </div>
+        <p>Upload any PDF and ask questions — the system retrieves relevant chunks first, then reasons on top. Taught me that RAG is a retrieval problem wearing an AI costume: chunking and embedding quality matter more than the model. Deployed live on Streamlit Cloud.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/rag-document-qa" target="_blank">GitHub</a>
           <a href="https://rag-document-qa.streamlit.app" target="_blank">Live Demo</a>
@@ -649,11 +620,10 @@
 
       <div class="project-card">
         <h3>P3 · AI Agent with Tools</h3>
-        <p class="project-meta">LangGraph · LangChain · Gemini · Tavily · Streamlit · 2025</p>
-        <p>A ReAct agent that can search the web (Tavily), reason across tool outputs, and decide
-          what to do next — without being explicitly told. Built with LangGraph's
-          <code>create_react_agent</code> for explicit control flow. The key lesson: building an agent
-          is easy; controlling it is the real engineering. Deployed live on Streamlit Cloud.</p>
+        <div class="project-pills">
+          <span class="pill">LangGraph</span><span class="pill">LangChain</span><span class="pill">Gemini</span><span class="pill">Tavily</span><span class="pill">Streamlit</span><span class="pill">2025</span>
+        </div>
+        <p>A ReAct agent that searches the web (Tavily), reasons across tool outputs, and decides what to do next. Built with LangGraph's <code>create_react_agent</code> for explicit control flow. Key lesson: building an agent is easy; controlling it is the real engineering.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/ai-agent-tools" target="_blank">GitHub</a>
           <a href="https://ai-agent-tools.streamlit.app" target="_blank">Live Demo</a>
@@ -662,11 +632,10 @@
 
       <div class="project-card">
         <h3>P4 · LLM API — Production Backend</h3>
-        <p class="project-meta">FastAPI · Gemini · ChromaDB · Langfuse · Supabase · Railway · 2025</p>
-        <p>A production-grade LLM API with RAG, persistent chat history (Supabase), and full
-          observability via Langfuse tracing — every model call logged, inspectable, and debuggable.
-          Deployed on Railway. The gap between "works in a notebook" and "works in production" is
-          mostly observability and boring reliability work. This project closed that gap.</p>
+        <div class="project-pills">
+          <span class="pill">FastAPI</span><span class="pill">Gemini</span><span class="pill">ChromaDB</span><span class="pill">Langfuse</span><span class="pill">Supabase</span><span class="pill">Railway</span><span class="pill">2025</span>
+        </div>
+        <p>A production-grade LLM API with RAG, persistent chat history (Supabase), and full observability via Langfuse tracing — every model call logged, inspectable, and debuggable. The gap between "works in a notebook" and "works in production" is mostly observability. This project closed that gap.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/llm-api-production" target="_blank">GitHub</a>
           <a href="https://llm-api-production.up.railway.app/docs" target="_blank">Live API</a>
@@ -675,11 +644,10 @@
 
       <div class="project-card">
         <h3>P5 · Fintech LLM Analyst — Text-to-SQL</h3>
-        <p class="project-meta">LangChain · Groq · Llama 3.1 · BigQuery · Streamlit · 2025</p>
-        <p>Ask a plain-English question about financial data, get a real answer backed by BigQuery SQL.
-          The LLM generates the query, BigQuery runs it, the LLM explains the result. Sits at the
-          intersection of everything I care about: language, data, and decisions that affect real people.
-          Deployed live on Streamlit Cloud.</p>
+        <div class="project-pills">
+          <span class="pill">LangChain</span><span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">BigQuery</span><span class="pill">Streamlit</span><span class="pill">2025</span>
+        </div>
+        <p>Ask a plain-English question about financial data, get a real answer backed by BigQuery SQL. The LLM generates the query, BigQuery runs it, the LLM explains the result. Sits at the intersection of language, data, and decisions that affect real people.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/fintech-llm-analyst" target="_blank">GitHub</a>
           <a href="https://fintech-llm-analyst.streamlit.app" target="_blank">Live Demo</a>
@@ -688,10 +656,10 @@
 
       <div class="project-card">
         <h3>Fintech Segmentation API</h3>
-        <p class="project-meta">FastAPI · Docker · Railway · GitHub Actions · 2024</p>
-        <p>A production-ready REST API serving a KMeans behavioral segmentation model trained on
-          278,932 transactions from an Indonesian digital payment platform. Classifies users into
-          4 segments across 31 behavioral features. Fully Dockerized with CI/CD via GitHub Actions.</p>
+        <div class="project-pills">
+          <span class="pill">FastAPI</span><span class="pill">Docker</span><span class="pill">Railway</span><span class="pill">GitHub Actions</span><span class="pill">Scikit-learn</span><span class="pill">2024</span>
+        </div>
+        <p>A production REST API serving a KMeans behavioral segmentation model trained on 278,932 transactions. Classifies users into 4 segments across 31 behavioral features. Fully Dockerized with CI/CD via GitHub Actions.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/fintech-segmentation-api" target="_blank">GitHub</a>
           <a href="https://fintech-segmentation-api-production.up.railway.app/docs" target="_blank">Live API</a>
@@ -700,10 +668,10 @@
 
       <div class="project-card">
         <h3>Fintech Behavioral Segmentation</h3>
-        <p class="project-meta">Python · Scikit-learn · Pandas · 2024</p>
-        <p>The research side of the segmentation work — customer clustering on fintech transaction
-          data to identify distinct behavioral patterns. Feature engineering across spending habits,
-          merchant diversity, temporal patterns, and payment behavior, feeding into the deployed API above.</p>
+        <div class="project-pills">
+          <span class="pill">Python</span><span class="pill">Scikit-learn</span><span class="pill">Pandas</span><span class="pill">2024</span>
+        </div>
+        <p>The research side of the segmentation work — clustering on fintech transaction data to identify distinct behavioral patterns. Feature engineering across spending habits, merchant diversity, temporal patterns, and payment behavior.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/fintech-behavioral-segmentation" target="_blank">GitHub</a>
         </div>
@@ -711,10 +679,10 @@
 
       <div class="project-card">
         <h3>Olist Analytics — dbt + BigQuery</h3>
-        <p class="project-meta">dbt · BigQuery · SQL · 2024</p>
-        <p>An end-to-end data pipeline on the Olist Brazilian e-commerce dataset, modeled into a
-          star schema with staging, intermediate, and mart layers — the same BigQuery mart tables
-          that feed into the Fintech LLM Analyst above.</p>
+        <div class="project-pills">
+          <span class="pill">dbt</span><span class="pill">BigQuery</span><span class="pill">SQL</span><span class="pill">2024</span>
+        </div>
+        <p>An end-to-end data pipeline on the Olist Brazilian e-commerce dataset, modeled into a star schema with staging, intermediate, and mart layers — the same BigQuery mart tables that feed into the Fintech LLM Analyst above.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/olist-analytics-dbt" target="_blank">GitHub</a>
         </div>
@@ -722,10 +690,10 @@
 
       <div class="project-card">
         <h3>SEA Dataset Dataloader — SEACROWD</h3>
-        <p class="project-meta">HuggingFace · NLP · Open Source · 2023 — present</p>
-        <p>Open-source contribution to the SEACROWD initiative — building standardized HuggingFace
-          dataset dataloaders for Southeast Asian language datasets. Part of the broader research
-          effort that led to the SEA-VL paper at ACL 2025.</p>
+        <div class="project-pills">
+          <span class="pill">HuggingFace</span><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Open Source</span><span class="pill">2023 — present</span>
+        </div>
+        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets. Part of the research effort that led to the SEA-VL paper at ACL 2025.</p>
         <div class="project-links">
           <a href="https://github.com/SEACrowd" target="_blank">GitHub (SEACrowd org)</a>
         </div>
@@ -733,10 +701,10 @@
 
       <div class="project-card">
         <h3>Face Recognition — Computer Vision</h3>
-        <p class="project-meta">Python · OpenCV · 2022</p>
-        <p>A real-time face recognition system built from scratch, covering face detection, face
-          matching, and identity classification. The project where I first realized making a computer
-          see things was way more interesting than I expected.</p>
+        <div class="project-pills">
+          <span class="pill">Python</span><span class="pill">OpenCV</span><span class="pill">2022</span>
+        </div>
+        <p>A real-time face recognition system built from scratch — face detection, matching, and identity classification. The project where I first realized making a computer see things was way more interesting than expected.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/face-recognition-computer-vision" target="_blank">GitHub</a>
         </div>
@@ -744,17 +712,18 @@
 
       <div class="project-card">
         <h3>Twitter Sentiment Analysis — Football Fan Bases</h3>
-        <p class="project-meta">NLP · Python · Undergraduate Thesis · 2023</p>
-        <p>Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and
-          FC Barcelona fan communities. Applied text preprocessing, lexicon-based methods, and
-          ML classifiers on scraped Twitter data.</p>
+        <div class="project-pills">
+          <span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Undergraduate Thesis</span><span class="pill">2023</span>
+        </div>
+        <p>Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and FC Barcelona fan communities. Lexicon-based methods and ML classifiers on scraped Twitter data.</p>
       </div>
 
       <div class="project-card">
         <h3>Stock Trading Robot</h3>
-        <p class="project-meta">LSTM · Mathematical Modeling · Jupyter Notebook · 2022</p>
-        <p>An automated stock trading agent for a mathematical modeling course. Uses LSTM to predict
-          stock prices up to ten days ahead and recommends buy, sell, or hold.</p>
+        <div class="project-pills">
+          <span class="pill">LSTM</span><span class="pill">Python</span><span class="pill">Mathematical Modeling</span><span class="pill">2022</span>
+        </div>
+        <p>An automated stock trading agent for a mathematical modeling course. Uses LSTM to predict stock prices up to ten days ahead and recommends buy, sell, or hold.</p>
         <div class="project-links">
           <a href="https://github.com/richardy-lobo-sapan/Stock-Trading-Robot" target="_blank">GitHub</a>
         </div>
