@@ -367,6 +367,32 @@
       position: absolute; inset: 0;
       background: linear-gradient(to bottom, rgba(13,13,20,0.05) 0%, rgba(13,13,20,0.9) 100%);
     }
+
+    /* ─── BACK TO TOP ─── */
+    #back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(184,92,42,0.45);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      z-index: 999;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    #back-to-top:hover { background: var(--accent-d); }
+    #back-to-top svg { width: 16px; height: 16px; fill: #fff; display: block; }
   </style>
 </head>
 <body>
@@ -808,7 +834,7 @@
         <div class="project-pills">
           <span class="pill">HuggingFace</span><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Open Source</span><span class="pill">2023 — present</span>
         </div>
-        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets. Part of the research effort that led to the paper at EMNLP 2024.</p>
+        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets. Part of the research effort that led to the SEA-VL paper at ACL 2025.</p>
         <div class="project-links">
           <a href="https://github.com/SEACrowd" target="_blank">GitHub (SEACrowd org)</a>
         </div>
@@ -854,5 +880,18 @@
   Last updated: June 2026
 </footer>
 
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+</script>
 </body>
 </html>
