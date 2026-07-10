@@ -542,7 +542,9 @@
       <p>
         I'm also genuinely interested in <strong>applied ML in finance</strong>: credit risk modeling,
         behavioral prediction, and how data can help build fairer systems for people historically
-        excluded from financial services.
+        excluded from financial services. That interest became a full credit risk decision engine —
+        PD modeling, SHAP explainability, expected loss, portfolio analytics, and stress testing on top
+        of a 300K-applicant consumer lending dataset.
       </p>
       <p>
         Lately I've been going deep into <strong>large language models</strong> — not just using them,
@@ -552,7 +554,9 @@
         way to a <strong>Fintech LLM Analyst</strong> that takes plain-English questions and translates
         them into SQL queries against real financial data. The through-line across all of it is the
         same question: what does it actually look like when AI works for the people using it, not just
-        the people building it?
+        the people building it? More recently that's pushed into document intelligence — a resilient
+        vision-language pipeline for extracting structured data from receipts, a citation-grounded RAG
+        system for internal documents, and a QLoRA fine-tune of a sub-3B model for fintech text-to-SQL.
       </p>
     </section>
 
@@ -593,6 +597,7 @@
           <span class="pill">Langfuse</span>
           <span class="pill">HuggingFace</span>
           <span class="pill">Streamlit</span>
+          <span class="pill">QLoRA / Unsloth</span>
         </div>
       </div>
 
@@ -602,6 +607,8 @@
           <span class="pill">dbt</span>
           <span class="pill">BigQuery</span>
           <span class="pill">Supabase</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">pgvector</span>
         </div>
       </div>
 
@@ -613,6 +620,8 @@
           <span class="pill">Railway</span>
           <span class="pill">GCP</span>
           <span class="pill">GitHub Actions</span>
+          <span class="pill">Pydantic</span>
+          <span class="pill">OpenCV</span>
         </div>
       </div>
     </section>
@@ -734,6 +743,61 @@
     <!-- PROJECTS -->
     <section id="projects">
       <h2>Projects</h2>
+
+      <div class="project-card">
+        <h3>Credit Risk Decision Engine</h3>
+        <div class="project-pills">
+          <span class="pill">Python</span><span class="pill">LightGBM</span><span class="pill">WOE / IV</span><span class="pill">SHAP</span><span class="pill">Streamlit</span><span class="pill">2026</span>
+        </div>
+        <p>An end-to-end credit risk system on the Home Credit Default Risk dataset (307K applicants): PD modeling (WOE/Logistic Regression vs. LightGBM), risk grading, SHAP explainability, expected loss, portfolio analytics, stress testing, and PSI-based drift monitoring — wrapped in a 4-page dashboard. The sharpest lesson: <code>is_unbalance=True</code> barely moved ranking metrics but pushed the mean predicted default probability to 5x the true base rate, which would have made every downstream Expected Loss figure 5x too high.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/credit-risk-engine" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Document Intelligence RAG System</h3>
+        <div class="project-pills">
+          <span class="pill">FastAPI</span><span class="pill">Postgres</span><span class="pill">pgvector</span><span class="pill">Groq</span><span class="pill">Langfuse</span><span class="pill">2026</span>
+        </div>
+        <p>RAG over mixed-format internal documents — PDFs, Word docs, slide decks, spreadsheets, CSVs — where every answer cites its exact source down to the page, slide, or row range. Structure-aware chunking per format, local embeddings, Postgres/pgvector retrieval, and full Langfuse tracing on every query.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/doc-intel-rag" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Resilient Document Extraction Engine — VLM Pipeline</h3>
+        <div class="project-pills">
+          <span class="pill">Groq</span><span class="pill">Llama Vision</span><span class="pill">GPT-4o</span><span class="pill">OpenCV</span><span class="pill">Pydantic</span><span class="pill">2026</span>
+        </div>
+        <p>A production-minded VLM pipeline for extracting structured data from receipts — Groq Llama vision as the primary extractor with a GPT-4o fallback, plus a self-healing Pydantic schema that flags arithmetic inconsistencies instead of hard-failing. Naive downscaling to cut inference cost tanked accuracy on right-aligned totals by 22%; an OpenCV multi-contour crop step recovered nearly all of it at the same resolution.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/doc-extraction" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>text2sql-finetune — QLoRA Fine-Tune for Fintech SQL</h3>
+        <div class="project-pills">
+          <span class="pill">QLoRA</span><span class="pill">Unsloth</span><span class="pill">Qwen2.5-Coder</span><span class="pill">2026</span>
+        </div>
+        <p>Fine-tuning a sub-3B model (Qwen2.5-Coder-1.5B) for fintech text-to-SQL with QLoRA, evaluated strictly on live SQLite execution accuracy rather than textual similarity. Both base and fine-tuned models hit 0% execution accuracy — but for opposite reasons: the base model buried valid SQL in chatty prose, while the fine-tune over-complicated simple queries after inheriting the training set's bias toward multi-table joins.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/text2sql-finetune" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>HR Attrition Analytics</h3>
+        <div class="project-pills">
+          <span class="pill">Python</span><span class="pill">XGBoost</span><span class="pill">Random Forest</span><span class="pill">Hypothesis Testing</span><span class="pill">2026</span>
+        </div>
+        <p>A full data science workflow on IBM's HR attrition dataset — EDA, hypothesis testing (Welch's t-test, ANOVA), classification, regression, and clustering. OverTime turned out to be the single strongest attrition signal: employees working overtime leave at roughly 3x the rate of those who don't.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/hr-attrition-analytics" target="_blank">GitHub</a>
+        </div>
+      </div>
 
       <div class="project-card">
         <h3>P1 · Aria — LLM Chatbot with Memory</h3>
@@ -877,7 +941,7 @@
 
 <footer>
   © 2026 Richardy Lobo' Sapan · Built with plain HTML &amp; CSS ·
-  Last updated: June 2026
+  Last updated: July 2026
 </footer>
 
 
