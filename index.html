@@ -598,6 +598,7 @@
           <span class="pill">HuggingFace</span>
           <span class="pill">Streamlit</span>
           <span class="pill">QLoRA / Unsloth</span>
+          <span class="pill">Ragas</span>
         </div>
       </div>
 
@@ -743,6 +744,17 @@
     <!-- PROJECTS -->
     <section id="projects">
       <h2>Projects</h2>
+
+      <div class="project-card">
+        <h3>RAG Evaluation &amp; Optimization System</h3>
+        <div class="project-pills">
+          <span class="pill">Ragas</span><span class="pill">LangChain</span><span class="pill">ChromaDB</span><span class="pill">Groq</span><span class="pill">GitHub Actions</span><span class="pill">2026</span>
+        </div>
+        <p>An automated evaluation harness that scores RAG pipelines on Ragas' four metrics (faithfulness, answer relevancy, context recall, context precision) across 7 configs, adds a second LLM-as-judge layer, and wires both into a GitHub Actions quality gate that fails a build like a broken unit test. Applied end-to-end to two of my own shipped RAG systems — DocChat and LLM API Production — with live CI gates on both repos. Chasing an eval score gap between the two projects led to root-causing a stale Chroma index (chunks silently duplicated on re-index) rather than a real architecture difference — a reminder to read the actual retrieved chunks before trusting an aggregate metric table.</p>
+        <div class="project-links">
+          <a href="https://github.com/richardy-lobo-sapan/rag-evaluation-system" target="_blank">GitHub</a>
+        </div>
+      </div>
 
       <div class="project-card">
         <h3>Credit Risk Decision Engine</h3>
