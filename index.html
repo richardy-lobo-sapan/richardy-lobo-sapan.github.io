@@ -4,403 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Richardy Lobo' Sapan</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg:       #0d0d14;
-      --surface:  #13131f;
-      --surface2: #111120;
-      --text:     #f0ede8;
-      --muted:    #9a9ab0;
-      --subtle:   #55556a;
-      --border:   #2a2a3a;
-      --border-d: #3a3a50;
-      --accent:   #b85c2a;
-      --accent-l: rgba(184,92,42,0.15);
-      --accent-d: #c96b38;
-      --year-col: #b85c2a;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14.5px;
-      line-height: 1.78;
-    }
-
-    a { color: var(--accent-d); text-decoration: none; }
-    a:hover { color: var(--accent); text-decoration: underline; }
-
-    code {
-      font-size: 0.82em;
-      background: #1e1e2e;
-      padding: 0.1em 0.35em;
-      border-radius: 3px;
-      color: var(--accent-d);
-    }
-
-    /* ─── LAYOUT ─── */
-    .wrapper {
-      display: flex;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem;
-      gap: 3.5rem;
-    }
-
-    /* ─── SIDEBAR ─── */
-    .sidebar {
-      flex-shrink: 0;
-      width: 220px;
-      position: sticky;
-      top: 3rem;
-      align-self: flex-start;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1rem 1.2rem;
-    }
-
-    .avatar {
-      width: 120px; height: 120px;
-      border-radius: 50%; object-fit: cover;
-      display: block; margin: 0 auto 0.9rem;
-      border: 2px solid var(--border-d);
-      background: #2a2a3a;
-    }
-
-    .sidebar h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem; font-weight: 400;
-      color: var(--text); line-height: 1.3;
-      margin-bottom: 0.2rem;
-    }
-
-    .sidebar .job { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.1rem; }
-    .sidebar .loc { font-size: 0.72rem; color: var(--subtle); margin-bottom: 1rem; }
-
-    /* icon socials */
-    .socials {
-      display: flex; justify-content: center;
-      gap: 0.55rem; margin-bottom: 1.1rem; flex-wrap: wrap;
-    }
-
-    .socials a {
-      display: flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px;
-      border: 1px solid var(--border); border-radius: 6px;
-      color: var(--subtle); background: var(--bg);
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-    }
-
-    .socials a:hover {
-      color: var(--accent); border-color: var(--accent);
-      background: var(--accent-l); text-decoration: none;
-    }
-
-    .socials a svg { width: 15px; height: 15px; fill: currentColor; display: block; }
-
-    /* sidenav */
-    .sidenav { list-style: none; border-top: 1px solid var(--border); padding-top: 0.9rem; text-align: left; }
-    .sidenav li + li { margin-top: 0.25rem; }
-    .sidenav a {
-      font-size: 0.78rem; color: var(--subtle);
-      display: block; padding: 0.1rem 0.2rem; border-radius: 4px;
-      transition: color 0.15s, background 0.12s;
-    }
-    .sidenav a:hover { color: var(--accent); background: var(--accent-l); text-decoration: none; }
-
-    /* ─── MAIN ─── */
-    main { flex: 1; min-width: 0; }
-    section {
-      margin-bottom: 0;
-      padding: 2rem 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-    }
-    section:nth-child(odd)  { background: var(--surface2); }
-    section:nth-child(even) { background: var(--surface); }
-
-    section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem; font-weight: 400;
-      color: var(--text);
-      padding-left: 0.75rem;
-      border-left: 3px solid var(--accent);
-      margin-bottom: 1.1rem; line-height: 1.3;
-    }
-
-    p { color: var(--muted); margin-bottom: 0.8rem; font-size: 0.9rem; }
-    p:last-child { margin-bottom: 0; }
-    .resume-line { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
-
-    /* ─── TECH STACK ─── */
-    .stack-group { margin-bottom: 0.9rem; }
-    .stack-label {
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--subtle); margin-bottom: 0.4rem;
-    }
-    .stack-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .pill {
-      font-size: 0.72rem; font-weight: 500;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--muted);
-      white-space: nowrap;
-      transition: background 0.12s, border-color 0.12s, color 0.12s;
-    }
-    .pill:hover { background: var(--accent-l); border-color: var(--accent); color: var(--accent-d); }
-
-    /* ─── FEATURED IN ─── */
-    .featured-card {
-      display: flex; align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.75rem 0.9rem;
-      margin-bottom: 0.7rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--surface);
-      transition: border-color 0.15s, box-shadow 0.15s;
-      text-decoration: none;
-    }
-    .featured-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(184,92,42,0.12);
-      text-decoration: none;
-    }
-    .featured-icon {
-      flex-shrink: 0; margin-top: 0.15rem;
-      width: 28px; height: 28px;
-      background: var(--accent-l); border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .featured-icon svg { width: 14px; height: 14px; fill: var(--accent); }
-    .featured-body { flex: 1; min-width: 0; }
-    .featured-title {
-      font-size: 0.85rem; font-weight: 500;
-      color: var(--text); line-height: 1.4;
-      margin-bottom: 0.15rem;
-    }
-    .featured-source { font-size: 0.72rem; color: var(--subtle); }
-
-    /* ─── EXPERIENCE ─── */
-    .exp-list { list-style: none; }
-    .exp-list li {
-      display: flex; gap: 1rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px dashed var(--border);
-      font-size: 0.88rem; color: var(--muted);
-    }
-    .exp-list li:last-child { border-bottom: none; }
-    .exp-year {
-      flex-shrink: 0; width: 82px;
-      font-size: 0.76rem; color: var(--year-col);
-      font-weight: 500; padding-top: 0.05rem;
-    }
-    .exp-text strong { font-weight: 500; color: var(--text); }
-
-    /* ─── PROJECT CARDS ─── */
-    .project-card {
-      margin-bottom: 1rem;
-      padding: 0.85rem 1rem;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 6px;
-      background: var(--surface);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 10px rgba(184,92,42,0.12);
-    }
-    .project-card h3 {
-      font-size: 0.88rem; font-weight: 500;
-      color: var(--text); margin-bottom: 0.3rem;
-    }
-    .project-card p { margin-bottom: 0.4rem; font-size: 0.875rem; }
-    .project-card p:last-child { margin-bottom: 0; }
-
-    .project-pills { display: flex; flex-wrap: wrap; gap: 0.28rem; margin-bottom: 0.45rem; }
-    .project-pills .pill {
-      font-size: 0.67rem;
-      padding: 0.12rem 0.45rem;
-      background: var(--bg);
-    }
-
-    .project-links { font-size: 0.76rem; margin-top: 0.4rem; }
-    .project-links a { margin-right: 0.65rem; color: var(--accent); font-weight: 500; }
-
-    /* ─── AWARDS ─── */
-    .entries { list-style: none; }
-    .entries li {
-      display: flex; gap: 1rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px dashed var(--border);
-      font-size: 0.88rem; color: var(--muted);
-      align-items: baseline;
-    }
-    .entries li:last-child { border-bottom: none; }
-    .entry-year { flex-shrink: 0; width: 40px; font-size: 0.76rem; color: var(--year-col); font-weight: 500; }
-    .entry-badge {
-      flex-shrink: 0; font-size: 0.63rem; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      padding: 0.1rem 0.4rem; border-radius: 3px; margin-right: 0.4rem;
-    }
-    .b-award    { background: rgba(139,94,60,0.25); color: #d4956a; }
-    .b-research { background: rgba(61,107,71,0.25); color: #7ec98a; }
-    .b-press    { background: rgba(58,82,120,0.25); color: #7fa3d4; }
-    .entries strong { font-weight: 500; color: var(--text); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      max-width: 980px; margin: 0 auto;
-      padding: 1.4rem 2rem 3rem;
-      font-size: 0.74rem; color: var(--subtle);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 640px) {
-      .mobile-hero-wrap { height: 200px; }
-
-      .wrapper {
-        flex-direction: column; gap: 0; padding: 0;
-      }
-
-      .sidebar {
-        width: 100%; position: static;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto auto auto;
-        align-items: center;
-        gap: 0.3rem 1rem;
-        text-align: left;
-        padding: 1rem;
-        border-radius: 0;
-        border-left: none; border-right: none; border-top: none;
-        margin-top: -2px;
-        position: relative; z-index: 2;
-      }
-
-      .avatar {
-        width: 72px; height: 72px;
-        margin: 0;
-        grid-row: 1 / 4;
-        margin-top: -28px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-      }
-
-      .sidebar h1 { grid-column: 2; padding-top: 0.3rem; }
-      .sidebar .job { grid-column: 2; margin-bottom: 0; }
-      .sidebar .loc { grid-column: 2; margin-bottom: 0; }
-
-      .socials {
-        grid-column: 1 / -1;
-        justify-content: flex-start;
-        margin-bottom: 0;
-        margin-top: 0.5rem;
-      }
-
-      /* mobile pill nav */
-      .sidenav { display: none; }
-      .mobile-nav {
-        display: flex !important;
-        grid-column: 1 / -1;
-        gap: 0.35rem;
-        overflow-x: auto;
-        margin-top: 0.65rem;
-        padding-bottom: 0.1rem;
-        scrollbar-width: none;
-        list-style: none;
-        border-top: none;
-        padding-top: 0;
-      }
-      .mobile-nav::-webkit-scrollbar { display: none; }
-      .mobile-nav li { flex-shrink: 0; }
-      .mobile-nav li a {
-        display: block;
-        font-size: 0.7rem; font-weight: 500;
-        padding: 0.22rem 0.6rem;
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        background: var(--bg);
-        color: var(--muted);
-        white-space: nowrap;
-      }
-      .mobile-nav li a:hover {
-        color: var(--accent); border-color: var(--accent);
-        background: var(--accent-l); text-decoration: none;
-      }
-
-      main { padding: 0.5rem 0; }
-      section { padding: 1.2rem 1rem; margin-bottom: 0.4rem; border-radius: 0; }
-
-      body { font-size: 13px; }
-
-      footer { padding: 1rem 1rem 2rem; }
-    }
-
-    /* ─── HERO (all screens) ─── */
-    .mobile-hero-wrap {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      height: 280px;
-      width: 100%;
-    }
-    .mobile-hero-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 30%;
-      display: block;
-    }
-    .mobile-hero-wrap::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(13,13,20,0.05) 0%, rgba(13,13,20,0.9) 100%);
-    }
-
-    /* ─── BACK TO TOP ─── */
-    #back-to-top {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 14px rgba(184,92,42,0.45);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.25s, transform 0.25s;
-      pointer-events: none;
-      z-index: 999;
-    }
-    #back-to-top.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    #back-to-top:hover { background: var(--accent-d); }
-    #back-to-top svg { width: 16px; height: 16px; fill: #fff; display: block; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Mobile hero — only visible on small screens via CSS -->
-<div class="mobile-hero-wrap">
-  <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80" alt="Earth from space" />
-</div>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- Mobile hero — nebula band, mobile only via CSS -->
+<div class="mobile-hero-wrap" aria-hidden="true"></div>
 
 <div class="wrapper">
 
@@ -410,6 +23,7 @@
     <h1>Richardy Lobo' Sapan</h1>
     <p class="job">Data Scientist &amp; AI/ML Engineer</p>
     <p class="loc">Jakarta, Indonesia</p>
+    <p class="tagline"><span id="tagline-text"></span><span class="tagline-cursor" aria-hidden="true">|</span></p>
 
     <div class="socials">
       <!-- GitHub -->
@@ -461,7 +75,7 @@
   <main>
 
     <!-- INTRO -->
-    <section id="intro">
+    <section id="intro" class="reveal">
       <p>
         I'm a data scientist and AI/ML engineer based in Jakarta, Indonesia — building systems at the
         intersection of language, data, and decisions that actually matter. My work spans predictive
@@ -483,7 +97,7 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience">
+    <section id="experience" class="reveal">
       <h2>Experience</h2>
       <ul class="exp-list">
         <li>
@@ -530,7 +144,7 @@
     </section>
 
     <!-- INTERESTS -->
-    <section id="interests">
+    <section id="interests" class="reveal">
       <h2>Interests</h2>
       <p>
         I'm drawn to <strong>natural language processing</strong> — specifically how we can build models
@@ -561,7 +175,7 @@
     </section>
 
     <!-- TECH STACK -->
-    <section id="stack">
+    <section id="stack" class="reveal">
       <h2>Tech Stack</h2>
 
       <div class="stack-group">
@@ -628,7 +242,7 @@
     </section>
 
     <!-- OUTSIDE WORK -->
-    <section id="outside">
+    <section id="outside" class="reveal">
       <h2>Outside of Work</h2>
       <p>
         I play a lot of games — and I mean a lot. My range is embarrassingly wide: one moment I'm sweating
@@ -651,63 +265,38 @@
     </section>
 
     <!-- AWARDS & RESEARCH -->
-    <section id="recognition">
+    <section id="recognition" class="reveal">
       <h2>Awards &amp; Research</h2>
       <ul class="entries">
-        <li>
-          <span class="entry-year">2025</span>
-          <div>
-            <span class="entry-badge b-research">Research</span>
-            <strong>SEA-VL: Multicultural Vision-Language Dataset for Southeast Asia</strong><br/>
-            Co-author. Cahyawijaya et al., <em>ACL 2025 (Long Papers)</em>.
-            Contributed to dataset preprocessing and documentation.
-            <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank">[ACL Anthology]</a>
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2025</span><span class="entry-badge b-research">Research</span><strong>SEA-VL: Multicultural Vision-Language Dataset for Southeast Asia.</strong>
+          Co-author. Cahyawijaya et al., <em>ACL 2025 (Long Papers)</em>. Contributed to dataset preprocessing and documentation.
+          <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank">[ACL Anthology]</a>
         </li>
-        <li>
-          <span class="entry-year">2023</span>
-          <div>
-            <span class="entry-badge b-award">Award</span>
-            <strong>Most Outstanding Student — Mathematics Dept., UI</strong><br/>
-            Recognized out of 600+ students.
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2023</span><span class="entry-badge b-award">Award</span><strong>Most Outstanding Student — Mathematics Dept., UI.</strong>
+          Recognized out of 600+ students.
         </li>
-        <li>
-          <span class="entry-year">2022</span>
-          <div>
-            <span class="entry-badge b-award">Award</span>
-            <strong>1st Runner Up — ASEAN Data Science Challenge 2022</strong><br/>
-            Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2022</span><span class="entry-badge b-award">Award</span><strong>1st Runner Up — ASEAN Data Science Challenge 2022.</strong>
+          Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.
         </li>
-        <li>
-          <span class="entry-year">2022</span>
-          <div>
-            <span class="entry-badge b-award">Award</span>
-            <strong>1st Place — Ganesha Student Innovation Summit Challenge 2022</strong><br/>
-            Outperformed 100+ individual participants and 10 finalist teams.
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2022</span><span class="entry-badge b-award">Award</span><strong>1st Place — Ganesha Student Innovation Summit Challenge 2022.</strong>
+          Outperformed 100+ individual participants and 10 finalist teams.
         </li>
-        <li>
-          <span class="entry-year">2021</span>
-          <div>
-            <span class="entry-badge b-award">Award</span>
-            <strong>1st Winner — International Youth Summit for Renewable Energy 2021</strong><br/>
-            Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2021</span><span class="entry-badge b-award">Award</span><strong>1st Winner — International Youth Summit for Renewable Energy 2021.</strong>
+          Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.
         </li>
-        <li>
-          <span class="entry-year">2021</span>
-          <div>
-            <span class="entry-badge b-award">Scholarship</span>
-            <strong>Dato' Dr. Low Tuck Kwong Scholarship</strong>
-          </div>
+        <li class="entry-cite">
+          <span class="entry-year">2021</span><span class="entry-badge b-award">Scholarship</span><strong>Dato' Dr. Low Tuck Kwong Scholarship.</strong>
         </li>
       </ul>
     </section>
 
     <!-- FEATURED IN -->
-    <section id="featured">
+    <section id="featured" class="reveal">
       <h2>Featured In</h2>
 
       <a class="featured-card" href="https://tf.ugm.ac.id/2021/10/07/juara-1-international-youth-summit-for-renewable-energy-iysre-tahun-2021/" target="_blank">
@@ -741,9 +330,9 @@
       </a>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Projects</h2>
+    <!-- SELECTED PROJECTS -->
+    <section id="projects" class="reveal">
+      <h2>Selected Projects</h2>
 
       <div class="project-card">
         <h3>RAG Evaluation &amp; Optimization System</h3>
@@ -801,53 +390,6 @@
       </div>
 
       <div class="project-card">
-        <h3>HR Attrition Analytics</h3>
-        <div class="project-pills">
-          <span class="pill">Python</span><span class="pill">XGBoost</span><span class="pill">Random Forest</span><span class="pill">Hypothesis Testing</span><span class="pill">2026</span>
-        </div>
-        <p>A full data science workflow on IBM's HR attrition dataset — EDA, hypothesis testing (Welch's t-test, ANOVA), classification, regression, and clustering. OverTime turned out to be the single strongest attrition signal: employees working overtime leave at roughly 3x the rate of those who don't.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/hr-attrition-analytics" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>P1 · Aria — LLM Chatbot with Memory</h3>
-        <div class="project-pills">
-          <span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">LangChain</span><span class="pill">Streamlit</span><span class="pill">2025</span>
-        </div>
-        <p>A conversational AI with persistent memory — demonstrating that the hard part of building a chatbot isn't the model call, it's state management. Built on Groq for near-real-time inference. Deployed live on Streamlit Cloud.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/llm-chatbot-memory" target="_blank">GitHub</a>
-          <a href="https://llm-chatbot-memory-evq5f6hm6yhlcuxjeqwvzy.streamlit.app/" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>P2 · DocChat — RAG Document Q&amp;A</h3>
-        <div class="project-pills">
-          <span class="pill">LangChain</span><span class="pill">ChromaDB</span><span class="pill">Gemini</span><span class="pill">Streamlit</span><span class="pill">2025</span>
-        </div>
-        <p>Upload any PDF and ask questions — the system retrieves relevant chunks first, then reasons on top. Taught me that RAG is a retrieval problem wearing an AI costume: chunking and embedding quality matter more than the model. Deployed live on Streamlit Cloud.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/rag-document-qa" target="_blank">GitHub</a>
-          <a href="https://rag-document-chat-o4uujl2eatcayam4vxmuh3.streamlit.app/" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>P3 · AI Agent with Tools</h3>
-        <div class="project-pills">
-          <span class="pill">LangGraph</span><span class="pill">LangChain</span><span class="pill">Gemini</span><span class="pill">Tavily</span><span class="pill">Streamlit</span><span class="pill">2025</span>
-        </div>
-        <p>A ReAct agent that searches the web (Tavily), reasons across tool outputs, and decides what to do next. Built with LangGraph's <code>create_react_agent</code> for explicit control flow. Key lesson: building an agent is easy; controlling it is the real engineering.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/ai-agent-tools" target="_blank">GitHub</a>
-          <a href="https://ai-agent-tools-cwd7wrxjhyntnbicdccsri.streamlit.app/" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
         <h3>P4 · LLM API — Production Backend</h3>
         <div class="project-pills">
           <span class="pill">FastAPI</span><span class="pill">Gemini</span><span class="pill">ChromaDB</span><span class="pill">Langfuse</span><span class="pill">Supabase</span><span class="pill">Railway</span><span class="pill">2025</span>
@@ -859,92 +401,10 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>P5 · Fintech LLM Analyst — Text-to-SQL</h3>
-        <div class="project-pills">
-          <span class="pill">LangChain</span><span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">BigQuery</span><span class="pill">Streamlit</span><span class="pill">2025</span>
-        </div>
-        <p>Ask a plain-English question about financial data, get a real answer backed by BigQuery SQL. The LLM generates the query, BigQuery runs it, the LLM explains the result. Sits at the intersection of language, data, and decisions that affect real people.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-llm-analyst" target="_blank">GitHub</a>
-          <a href="https://fintech-llm-analyst-ciezta6xfgfy9mqdma8jd6.streamlit.app/" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Fintech Segmentation API</h3>
-        <div class="project-pills">
-          <span class="pill">FastAPI</span><span class="pill">Docker</span><span class="pill">Railway</span><span class="pill">GitHub Actions</span><span class="pill">Scikit-learn</span><span class="pill">2024</span>
-        </div>
-        <p>A production REST API serving a KMeans behavioral segmentation model trained on 278,932 transactions. Classifies users into 4 segments across 31 behavioral features. Fully Dockerized with CI/CD via GitHub Actions.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-segmentation-api" target="_blank">GitHub</a>
-          <a href="https://fintech-segmentation-api-production.up.railway.app/docs" target="_blank">Live API</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Fintech Behavioral Segmentation</h3>
-        <div class="project-pills">
-          <span class="pill">Python</span><span class="pill">Scikit-learn</span><span class="pill">Pandas</span><span class="pill">2024</span>
-        </div>
-        <p>The research side of the segmentation work — clustering on fintech transaction data to identify distinct behavioral patterns. Feature engineering across spending habits, merchant diversity, temporal patterns, and payment behavior.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-behavioral-segmentation" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Olist Analytics — dbt + BigQuery</h3>
-        <div class="project-pills">
-          <span class="pill">dbt</span><span class="pill">BigQuery</span><span class="pill">SQL</span><span class="pill">2024</span>
-        </div>
-        <p>An end-to-end data pipeline on the Olist Brazilian e-commerce dataset, modeled into a star schema with staging, intermediate, and mart layers — the same BigQuery mart tables that feed into the Fintech LLM Analyst above.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/olist-analytics-dbt" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>SEA Dataset Dataloader — SEACROWD</h3>
-        <div class="project-pills">
-          <span class="pill">HuggingFace</span><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Open Source</span><span class="pill">2023 — present</span>
-        </div>
-        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets. Part of the research effort that led to the paper at EMNLP 2024.</p>
-        <div class="project-links">
-          <a href="https://github.com/SEACrowd" target="_blank">GitHub (SEACrowd org)</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Face Recognition — Computer Vision</h3>
-        <div class="project-pills">
-          <span class="pill">Python</span><span class="pill">OpenCV</span><span class="pill">2022</span>
-        </div>
-        <p>A real-time face recognition system built from scratch — face detection, matching, and identity classification. The project where I first realized making a computer see things was way more interesting than expected.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/face-recognition-computer-vision" target="_blank">GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Twitter Sentiment Analysis — Football Fan Bases</h3>
-        <div class="project-pills">
-          <span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Undergraduate Thesis</span><span class="pill">2023</span>
-        </div>
-        <p>Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and FC Barcelona fan communities. Lexicon-based methods and ML classifiers on scraped Twitter data.</p>
-      </div>
-
-      <div class="project-card">
-        <h3>Stock Trading Robot</h3>
-        <div class="project-pills">
-          <span class="pill">LSTM</span><span class="pill">Python</span><span class="pill">Mathematical Modeling</span><span class="pill">2022</span>
-        </div>
-        <p>An automated stock trading agent for a mathematical modeling course. Uses LSTM to predict stock prices up to ten days ahead and recommends buy, sell, or hold.</p>
-        <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/Stock-Trading-Robot" target="_blank">GitHub</a>
-        </div>
-      </div>
+      <a class="project-card view-all-card" href="projects.html">
+        <h3>View All Projects →</h3>
+        <p>11 more projects spanning production LLM systems, applied ML, NLP research, and early work.</p>
+      </a>
 
     </section>
 
@@ -952,22 +412,16 @@
 </div>
 
 <footer>
-  © 2026 Richardy Lobo' Sapan · Built with plain HTML &amp; CSS ·
+  © 2026 Richardy Lobo' Sapan · Built with plain HTML, CSS &amp; vanilla JS ·
   Last updated: July 2026
 </footer>
 
 
 <!-- Back to Top -->
-<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button id="back-to-top" aria-label="Back to top">
   <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
-<script>
-  const btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) btn.classList.add('visible');
-    else btn.classList.remove('visible');
-  });
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
