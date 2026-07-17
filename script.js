@@ -3,8 +3,13 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ─── Typewriter tagline ─── */
+  /* ─── Typewriter tagline ───
+     Types one phrase in, once, then settles — deliberately not a looping
+     type/delete cycle. A sticky sidebar element that animates forever
+     competes for attention on every scroll; a single type-in reads as a
+     considered detail instead. */
   var taglineEl = document.getElementById('tagline-text');
+  var taglineCursor = document.querySelector('.tagline-cursor');
   if (taglineEl) {
     var phrases = [
       'building RAG pipelines',
@@ -13,35 +18,25 @@
       'shipping to production',
       'researching SEA NLP'
     ];
+    var chosen = phrases[Math.floor(Math.random() * phrases.length)];
+
     if (reduceMotion) {
-      taglineEl.textContent = phrases[0];
+      /* reduced-motion keeps the original static, non-blinking cursor
+         (handled by the prefers-reduced-motion rule in style.css) */
+      taglineEl.textContent = chosen;
     } else {
-      (function typewriter() {
-        var pIndex = 0, charIndex = 0, deleting = false;
-        var TYPE_MS = 55, DELETE_MS = 30, HOLD_MS = 1400, GAP_MS = 300;
+      (function typeOnce() {
+        var charIndex = 0;
+        var TYPE_MS = 55;
 
         function tick() {
-          var current = phrases[pIndex];
-          if (!deleting) {
-            charIndex++;
-            taglineEl.textContent = current.slice(0, charIndex);
-            if (charIndex === current.length) {
-              deleting = true;
-              setTimeout(tick, HOLD_MS);
-              return;
-            }
-            setTimeout(tick, TYPE_MS);
-          } else {
-            charIndex--;
-            taglineEl.textContent = current.slice(0, charIndex);
-            if (charIndex === 0) {
-              deleting = false;
-              pIndex = (pIndex + 1) % phrases.length;
-              setTimeout(tick, GAP_MS);
-              return;
-            }
-            setTimeout(tick, DELETE_MS);
+          charIndex++;
+          taglineEl.textContent = chosen.slice(0, charIndex);
+          if (charIndex === chosen.length) {
+            if (taglineCursor) taglineCursor.classList.add('settled');
+            return;
           }
+          setTimeout(tick, TYPE_MS);
         }
 
         setTimeout(tick, 600);
@@ -86,18 +81,21 @@
     var ctx = canvas.getContext('2d');
     var stars = [];
     var rafId = null;
+    var resizeTimer = null;
     var DENSITY = 9000; /* px^2 of viewport per star — kept sparse on purpose */
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    /* Cached each resize rather than re-read from window.innerWidth/Height
+       on every animation frame (draw() runs ~60x/sec). */
+    var viewW = window.innerWidth;
+    var viewH = window.innerHeight;
 
     function seedStars() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      var count = Math.floor((w * h) / DENSITY);
+      var count = Math.floor((viewW * viewH) / DENSITY);
       stars = [];
       for (var i = 0; i < count; i++) {
         stars.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
+          x: Math.random() * viewW,
+          y: Math.random() * viewH,
           r: Math.random() * 1.1 + 0.2,
           baseAlpha: Math.random() * 0.5 + 0.15,
           phase: Math.random() * Math.PI * 2,
@@ -107,20 +105,18 @@
     }
 
     function resize() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
+      viewW = window.innerWidth;
+      viewH = window.innerHeight;
+      canvas.width = viewW * dpr;
+      canvas.height = viewH * dpr;
+      canvas.style.width = viewW + 'px';
+      canvas.style.height = viewH + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       seedStars();
     }
 
     function paintStatic() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, viewW, viewH);
       for (var i = 0; i < stars.length; i++) {
         var s = stars[i];
         ctx.beginPath();
@@ -131,9 +127,7 @@
     }
 
     function draw(time) {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      ctx.clearRect(0, 0, w, h);
+      ctx.clearRect(0, 0, viewW, viewH);
       for (var i = 0; i < stars.length; i++) {
         var s = stars[i];
         var twinkle = Math.sin(time * s.speed + s.phase) * 0.35;
@@ -166,9 +160,14 @@
       else start();
     });
 
+    /* Debounced: avoids a full star reseed on every intermediate pixel
+       while the window is actively being dragged/resized. */
     window.addEventListener('resize', function () {
-      resize();
-      if (reduceMotion) paintStatic();
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        resize();
+        if (reduceMotion) paintStatic();
+      }, 150);
     }, { passive: true });
 
     resize();

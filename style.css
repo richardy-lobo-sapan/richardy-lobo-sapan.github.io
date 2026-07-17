@@ -9,7 +9,7 @@
   --surface2: #0f0f1a;
   --text:     #f0ede8;
   --muted:    #9a9ab0;
-  --subtle:   #55556a;
+  --subtle:   #84849e;
   --border:   #26263a;
   --border-d: #38384f;
   --accent:   #c78a4a;
@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
 
 body {
   position: relative;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background:
     radial-gradient(ellipse 60% 40% at 15% 8%,  rgba(108,84,168,0.14), transparent 60%),
     radial-gradient(ellipse 50% 35% at 88% 28%, rgba(58,92,150,0.10), transparent 60%),
@@ -43,6 +43,25 @@ a:hover { color: var(--accent); text-decoration: underline; }
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ─── SKIP LINK (keyboard/AT users bypass the sidebar's ~12 links) ─── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--accent);
+  color: #0a0a12;
+  padding: 0.65rem 1.1rem;
+  border-radius: 0 0 6px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
 }
 
 code {
@@ -113,7 +132,7 @@ section[id] { scroll-margin-top: 1.5rem; }
 }
 
 .sidebar h1 {
-  font-family: 'Spectral', serif;
+  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
   font-size: 1.05rem; font-weight: 500;
   color: var(--text); line-height: 1.3;
   margin-bottom: 0.2rem;
@@ -136,6 +155,12 @@ section[id] { scroll-margin-top: 1.5rem; }
   animation: blink 1s step-end infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+/* once the one-time type-in finishes, stop blinking rather than run forever */
+.tagline-cursor.settled {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
 
 /* icon socials */
 .socials {
@@ -168,6 +193,9 @@ section[id] { scroll-margin-top: 1.5rem; }
 }
 .sidenav a:hover { color: var(--accent); background: var(--accent-l); text-decoration: none; }
 
+/* mobile pill nav: hidden by default, shown only in the mobile layout below */
+.mobile-nav { display: none; }
+
 /* back-to-home (projects.html) */
 .back-link {
   display: inline-flex; align-items: center; gap: 0.35rem;
@@ -189,7 +217,7 @@ section:nth-child(even) { background: var(--surface); }
 
 section h2 {
   counter-increment: section;
-  font-family: 'Spectral', serif;
+  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
   font-size: 1.15rem; font-weight: 500;
   color: var(--text);
   padding-left: 0.9rem;
@@ -318,7 +346,7 @@ p:last-child { margin-bottom: 0; }
   font-weight: 500; font-variant-numeric: tabular-nums;
   margin-bottom: 0.15rem;
 }
-.exp-text strong { font-weight: 500; color: var(--text); font-family: 'Spectral', serif; }
+.exp-text strong { font-weight: 500; color: var(--text); font-family: 'Spectral', Georgia, 'Times New Roman', serif; }
 
 /* ─── PROJECT CARDS ─── */
 .project-card {
@@ -327,7 +355,10 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: 1rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
+  /* dimmed accent at rest — with a dozen-plus cards on the page, a
+     full-strength accent stripe on every one stops reading as a highlight.
+     It brightens to full accent on hover instead. */
+  border-left: 3px solid rgba(199,138,74,0.45);
   border-radius: 6px;
   background: var(--surface);
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -337,7 +368,7 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 2px 10px rgba(199,138,74,0.12);
 }
 .project-card h3 {
-  font-family: 'Spectral', serif;
+  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
   font-size: 0.95rem; font-weight: 500;
   color: var(--text); margin-bottom: 0.3rem;
 }
@@ -396,7 +427,7 @@ p:last-child { margin-bottom: 0; }
 .b-award    { background: rgba(139,94,60,0.25); color: #d4956a; }
 .b-research { background: rgba(61,107,71,0.25); color: #7ec98a; }
 .b-press    { background: rgba(58,82,120,0.25); color: #7fa3d4; }
-.entries strong { font-family: 'Spectral', serif; font-weight: 500; color: var(--text); }
+.entries strong { font-family: 'Spectral', Georgia, 'Times New Roman', serif; font-weight: 500; color: var(--text); }
 
 /* ─── FOOTER ─── */
 footer {
@@ -408,6 +439,15 @@ footer {
 }
 
 /* ─── RESPONSIVE ─── */
+/* Moderate/tablet widths: the desktop two-column shell is still used (see the
+   640px breakpoint below for the stacked mobile layout), but the fixed 220px
+   sidebar plus the wrapper's desktop gap/padding leaves very little room for
+   main content on tablets. Reclaim that space without changing the layout. */
+@media (min-width: 641px) and (max-width: 860px) {
+  .wrapper { gap: 1.75rem; padding: 2.5rem 1.25rem; }
+  .sidebar { width: 180px; padding: 1.1rem 0.75rem 1rem; }
+}
+
 @media (max-width: 640px) {
   .mobile-hero-wrap { display: block; height: 200px; }
 
@@ -441,6 +481,7 @@ footer {
   .sidebar h1 { grid-column: 2; padding-top: 0.3rem; }
   .sidebar .job { grid-column: 2; margin-bottom: 0; }
   .sidebar .loc { grid-column: 2; margin-bottom: 0; }
+  .sidebar .tagline { grid-column: 2; margin-bottom: 0; }
 
   .socials {
     grid-column: 1 / -1;
@@ -544,7 +585,7 @@ footer {
 
 /* ─── PRINT ─── */
 @media print {
-  #starfield, #grain, #back-to-top, .mobile-hero-wrap, .socials, .sidenav, .mobile-nav, .tagline { display: none !important; }
+  #starfield, #grain, #back-to-top, .mobile-hero-wrap, .socials, .sidenav, .mobile-nav, .tagline, .skip-link { display: none !important; }
   body { background: #fff; color: #000; }
   .sidebar, section, .project-card, .featured-card { background: #fff; border-color: #ccc; box-shadow: none; }
   a { color: #000; text-decoration: underline; }
