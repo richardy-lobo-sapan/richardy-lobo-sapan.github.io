@@ -512,6 +512,29 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* ─── HERO (mobile only — nebula band, no photo) ───
+   Base rule must stay ABOVE the max-width:640px breakpoint below: both
+   select .mobile-hero-wrap with equal specificity, so whichever comes last
+   in source order wins regardless of the media query — this rule needs to
+   lose that tiebreak on small screens, not win it. */
+.mobile-hero-wrap {
+  display: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 280px;
+  width: 100%;
+  background:
+    radial-gradient(ellipse 70% 60% at 25% 20%, rgba(56,189,248,0.28), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 80% 65%, rgba(99,102,241,0.20), transparent 50%),
+    var(--bg);
+}
+.mobile-hero-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(7,11,25,0.05) 0%, rgba(7,11,25,0.92) 100%);
+}
+
 /* ─── RESPONSIVE ─── */
 /* Moderate/tablet widths: the desktop two-column shell is still used (see the
    640px breakpoint below for the stacked mobile layout), but the fixed 220px
@@ -600,25 +623,23 @@ footer {
   body { font-size: 13px; }
 
   footer { padding: 1rem 1rem 2rem; }
-}
 
-/* ─── HERO (mobile only — nebula band, no photo) ─── */
-.mobile-hero-wrap {
-  display: none;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  height: 280px;
-  width: 100%;
-  background:
-    radial-gradient(ellipse 70% 60% at 25% 20%, rgba(56,189,248,0.28), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 80% 65%, rgba(99,102,241,0.20), transparent 50%),
-    var(--bg);
-}
-.mobile-hero-wrap::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(7,11,25,0.05) 0%, rgba(7,11,25,0.92) 100%);
+  /* On desktop #back-to-top floats in the margin outside the 980px content
+     column, so it never touches text. On mobile the wrapper is full-width
+     with no such gutter, so the fixed corner button sits directly over
+     whatever pill/word happens to scroll underneath it. A smaller glass
+     chip (matching the card aesthetic) is far less disruptive to read
+     around than a solid opaque circle in the same spot. */
+  #back-to-top {
+    width: 38px; height: 38px;
+    bottom: 1rem; right: 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--chip-border);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+  #back-to-top svg { fill: var(--accent); }
 }
 
 /* ─── BACK TO TOP ─── */
