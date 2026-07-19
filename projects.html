@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -32,6 +32,34 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <canvas id="starfield" aria-hidden="true"></canvas>
+
+<div class="planet-decor" aria-hidden="true">
+  <svg viewBox="0 0 200 200" width="260" height="260">
+    <ellipse cx="100" cy="100" rx="95" ry="26" transform="rotate(-18 100 100)" fill="none" stroke="#38bdf8" stroke-width="8" opacity="0.10"/>
+    <ellipse cx="100" cy="100" rx="95" ry="26" transform="rotate(-18 100 100)" fill="none" stroke="#7dd3fc" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="100" cy="100" r="46" fill="#0ea5e9" opacity="0.12"/>
+    <circle cx="100" cy="100" r="46" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.3"/>
+  </svg>
+</div>
+
+<div class="moon-decor" aria-hidden="true">
+  <svg viewBox="0 0 140 140" width="170" height="170">
+    <circle cx="70" cy="70" r="55" fill="#94a3b8" opacity="0.10"/>
+    <circle cx="70" cy="70" r="55" fill="none" stroke="#cbd5e1" stroke-width="1" opacity="0.25"/>
+    <circle cx="52" cy="52" r="9" fill="#070b19" opacity="0.18"/>
+    <circle cx="86" cy="80" r="6" fill="#070b19" opacity="0.18"/>
+    <circle cx="62" cy="92" r="4" fill="#070b19" opacity="0.18"/>
+  </svg>
+</div>
+
+<div class="galaxy-decor" aria-hidden="true">
+  <svg viewBox="0 0 300 300" width="380" height="380">
+    <defs><filter id="galaxy-blur"><feGaussianBlur stdDeviation="18"/></filter></defs>
+    <ellipse cx="150" cy="150" rx="120" ry="65" transform="rotate(25 150 150)" fill="#6366f1" opacity="0.10" filter="url(#galaxy-blur)"/>
+    <ellipse cx="170" cy="140" rx="65" ry="36" transform="rotate(25 170 140)" fill="#38bdf8" opacity="0.09" filter="url(#galaxy-blur)"/>
+  </svg>
+</div>
+
 <div id="grain" aria-hidden="true"></div>
 
 <!-- Mobile hero — nebula band, mobile only via CSS -->
@@ -49,29 +77,30 @@
 
     <div class="socials">
       <!-- GitHub -->
-      <a href="https://github.com/richardy-lobo-sapan" target="_blank" title="GitHub">
+      <a href="https://github.com/richardy-lobo-sapan" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
         <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       </a>
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" title="LinkedIn">
+      <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
       <!-- Google Scholar -->
-      <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank" title="Google Scholar">
+      <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar">
         <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/></svg>
       </a>
       <!-- ResearchGate -->
-      <a href="https://www.researchgate.net/profile/Richardy-Sapan" target="_blank" title="ResearchGate">
+      <a href="https://www.researchgate.net/profile/Richardy-Sapan" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate">
         <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.44 12.44 0 00-.365 3.123v.521h-1.99c-.026.56-.049 1.33-.049 1.877h1.973v7.82c-.05 1.928-.278 3.29-.69 4.094-.41.804-1.017 1.205-1.822 1.205-.61 0-1.161-.223-1.657-.67-.494-.448-.764-1.015-.81-1.703h-.08a3.43 3.43 0 01-.528 1.907c-.337.49-.752.855-1.245 1.1a3.44 3.44 0 01-1.6.365c-1.148 0-2.063-.435-2.746-1.304C4.35 19.516 4 18.282 4 16.683c0-1.618.388-2.9 1.163-3.845.775-.944 1.795-1.416 3.06-1.416.793 0 1.476.182 2.049.547.573.365.993.904 1.26 1.617h.065v-1.86h2.05v7.68c0 .597.127 1.063.38 1.396.253.334.613.5 1.08.5.54 0 .965-.216 1.278-.648.312-.432.468-1.026.468-1.78V9.766h2.087c.026-.547.049-1.317.049-1.877h-2.087V6.384c0-1.16.133-1.98.4-2.46.267-.48.707-.72 1.32-.72.357 0 .71.066 1.063.197l.5-1.79A5.4 5.4 0 0019.586 0zM8.4 13.444c-.633 0-1.13.277-1.493.83-.362.553-.543 1.356-.543 2.41 0 1.01.178 1.79.535 2.34.357.55.851.824 1.483.824.63 0 1.127-.275 1.49-.824.363-.55.545-1.33.545-2.34 0-1.054-.182-1.857-.545-2.41-.363-.553-.86-.83-1.472-.83z"/></svg>
       </a>
       <!-- Medium -->
-      <a href="https://medium.com/@richardylobosapan" target="_blank" title="Medium">
+      <a href="https://medium.com/@richardylobosapan" target="_blank" rel="noopener noreferrer" title="Medium" aria-label="Medium">
         <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
       </a>
     </div>
 
-    <!-- Desktop sidenav (points back to homepage sections) -->
-    <ul class="sidenav">
+    <!-- Unified nav (points back to homepage sections) — vertical list on desktop, horizontal pill-scroller on mobile (see .nav in style.css) -->
+    <ul class="nav">
+      <li><a href="index.html#intro">About Me</a></li>
       <li><a href="index.html#experience">Experience</a></li>
       <li><a href="index.html#interests">Interests</a></li>
       <li><a href="index.html#stack">Tech Stack</a></li>
@@ -79,17 +108,6 @@
       <li><a href="index.html#recognition">Awards &amp; Research</a></li>
       <li><a href="index.html#featured">Featured In</a></li>
       <li><a href="index.html#projects">Selected Projects</a></li>
-    </ul>
-
-    <!-- Mobile pill nav (hidden on desktop via CSS) -->
-    <ul class="mobile-nav">
-      <li><a href="index.html#experience">Experience</a></li>
-      <li><a href="index.html#interests">Interests</a></li>
-      <li><a href="index.html#stack">Tech Stack</a></li>
-      <li><a href="index.html#outside">Outside Work</a></li>
-      <li><a href="index.html#recognition">Awards</a></li>
-      <li><a href="index.html#featured">Featured</a></li>
-      <li><a href="index.html#projects">Selected</a></li>
     </ul>
   </aside>
 
@@ -101,144 +119,185 @@
         <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
         Back to Home
       </a>
-      <h2>All Projects</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="14" height="9.5" rx="1.1"/><path d="M3 7.5l1.6-3.3h10.8L17 7.5"/><path d="M8 11.2h4"/></svg>All Projects</span></h2>
       <p style="margin-bottom: 1.4rem;">
         The rest of the portfolio — earlier LLM projects, applied ML work, open-source NLP
         contributions, and a couple of things from further back. For the current highlights, see the
         <a href="index.html#projects">Selected Projects</a> on the homepage.
       </p>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>HR Attrition Analytics</h3>
         <div class="project-pills">
           <span class="pill">Python</span><span class="pill">XGBoost</span><span class="pill">Random Forest</span><span class="pill">Hypothesis Testing</span><span class="pill">2026</span>
         </div>
-        <p>A full data science workflow on IBM's HR attrition dataset — EDA, hypothesis testing (Welch's t-test, ANOVA), classification, regression, and clustering. OverTime turned out to be the single strongest attrition signal: employees working overtime leave at roughly 3x the rate of those who don't.</p>
+        <p>A full data science workflow on IBM's HR attrition dataset.</p>
+        <ul>
+          <li><strong>Approach:</strong> EDA, hypothesis testing (Welch's t-test, ANOVA), classification, regression, and clustering.</li>
+          <li><strong>Key Insight:</strong> OverTime turned out to be the single strongest attrition signal — employees working overtime leave at roughly 3x the rate of those who don't.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/hr-attrition-analytics" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/hr-attrition-analytics" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>P1 · Aria — LLM Chatbot with Memory</h3>
         <div class="project-pills">
           <span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">LangChain</span><span class="pill">Streamlit</span><span class="pill">2025</span>
         </div>
-        <p>A conversational AI with persistent memory — demonstrating that the hard part of building a chatbot isn't the model call, it's state management. Built on Groq for near-real-time inference. Deployed live on Streamlit Cloud.</p>
+        <p>A conversational AI with persistent memory, deployed live on Streamlit Cloud.</p>
+        <ul>
+          <li><strong>Key Insight:</strong> The hard part of building a chatbot isn't the model call — it's state management.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/llm-chatbot-memory" target="_blank">GitHub</a>
-          <a href="https://llm-chatbot-memory-evq5f6hm6yhlcuxjeqwvzy.streamlit.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/richardy-lobo-sapan/llm-chatbot-memory" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://llm-chatbot-memory-evq5f6hm6yhlcuxjeqwvzy.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>P2 · DocChat — RAG Document Q&amp;A</h3>
         <div class="project-pills">
           <span class="pill">LangChain</span><span class="pill">ChromaDB</span><span class="pill">Gemini</span><span class="pill">Streamlit</span><span class="pill">2025</span>
         </div>
-        <p>Upload any PDF and ask questions — the system retrieves relevant chunks first, then reasons on top. Taught me that RAG is a retrieval problem wearing an AI costume: chunking and embedding quality matter more than the model. Deployed live on Streamlit Cloud.</p>
+        <p>Upload any PDF and ask questions — retrieves relevant chunks first, then reasons on top. Deployed live on Streamlit Cloud.</p>
+        <ul>
+          <li><strong>Key Insight:</strong> RAG is a retrieval problem wearing an AI costume — chunking and embedding quality matter more than the model.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/rag-document-qa" target="_blank">GitHub</a>
-          <a href="https://rag-document-chat-o4uujl2eatcayam4vxmuh3.streamlit.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/richardy-lobo-sapan/rag-document-qa" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://rag-document-chat-o4uujl2eatcayam4vxmuh3.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>P3 · AI Agent with Tools</h3>
         <div class="project-pills">
           <span class="pill">LangGraph</span><span class="pill">LangChain</span><span class="pill">Gemini</span><span class="pill">Tavily</span><span class="pill">Streamlit</span><span class="pill">2025</span>
         </div>
-        <p>A ReAct agent that searches the web (Tavily), reasons across tool outputs, and decides what to do next. Built with LangGraph's <code>create_react_agent</code> for explicit control flow. Key lesson: building an agent is easy; controlling it is the real engineering.</p>
+        <p>A ReAct agent that searches the web, reasons across tool outputs, and decides what to do next.</p>
+        <ul>
+          <li><strong>Key Insight:</strong> Building an agent is easy; controlling it is the real engineering.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/ai-agent-tools" target="_blank">GitHub</a>
-          <a href="https://ai-agent-tools-cwd7wrxjhyntnbicdccsri.streamlit.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/richardy-lobo-sapan/ai-agent-tools" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://ai-agent-tools-cwd7wrxjhyntnbicdccsri.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>P5 · Fintech LLM Analyst — Text-to-SQL</h3>
         <div class="project-pills">
           <span class="pill">LangChain</span><span class="pill">Groq</span><span class="pill">Llama 3.1</span><span class="pill">BigQuery</span><span class="pill">Streamlit</span><span class="pill">2025</span>
         </div>
-        <p>Ask a plain-English question about financial data, get a real answer backed by BigQuery SQL. The LLM generates the query, BigQuery runs it, the LLM explains the result. Sits at the intersection of language, data, and decisions that affect real people.</p>
+        <p>Ask a plain-English question about financial data, get a real answer backed by BigQuery SQL.</p>
+        <ul>
+          <li><strong>Pipeline:</strong> The LLM generates the query, BigQuery runs it, and the LLM explains the result in plain English.</li>
+          <li><strong>Key Insight:</strong> Sits at the intersection of language, data, and decisions that affect real people.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-llm-analyst" target="_blank">GitHub</a>
-          <a href="https://fintech-llm-analyst-ciezta6xfgfy9mqdma8jd6.streamlit.app/" target="_blank">Live Demo</a>
+          <a href="https://github.com/richardy-lobo-sapan/fintech-llm-analyst" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://fintech-llm-analyst-ciezta6xfgfy9mqdma8jd6.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Fintech Segmentation API</h3>
         <div class="project-pills">
           <span class="pill">FastAPI</span><span class="pill">Docker</span><span class="pill">Railway</span><span class="pill">GitHub Actions</span><span class="pill">Scikit-learn</span><span class="pill">2024</span>
         </div>
-        <p>A production REST API serving a KMeans behavioral segmentation model trained on 278,932 transactions. Classifies users into 4 segments across 31 behavioral features. Fully Dockerized with CI/CD via GitHub Actions.</p>
+        <p>A production REST API serving a KMeans behavioral segmentation model trained on 278,932 transactions.</p>
+        <ul>
+          <li><strong>Model:</strong> Classifies users into 4 segments across 31 behavioral features.</li>
+          <li><strong>Infra:</strong> Fully Dockerized with CI/CD via GitHub Actions.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-segmentation-api" target="_blank">GitHub</a>
-          <a href="https://fintech-segmentation-api-production.up.railway.app/docs" target="_blank">Live API</a>
+          <a href="https://github.com/richardy-lobo-sapan/fintech-segmentation-api" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://fintech-segmentation-api-production.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Fintech Behavioral Segmentation</h3>
         <div class="project-pills">
           <span class="pill">Python</span><span class="pill">Scikit-learn</span><span class="pill">Pandas</span><span class="pill">2024</span>
         </div>
-        <p>The research side of the segmentation work — clustering on fintech transaction data to identify distinct behavioral patterns. Feature engineering across spending habits, merchant diversity, temporal patterns, and payment behavior.</p>
+        <p>The research side of the segmentation work — clustering on fintech transaction data to identify distinct behavioral patterns.</p>
+        <ul>
+          <li><strong>Features:</strong> Spending habits, merchant diversity, temporal patterns, and payment behavior.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/fintech-behavioral-segmentation" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/fintech-behavioral-segmentation" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Olist Analytics — dbt + BigQuery</h3>
         <div class="project-pills">
           <span class="pill">dbt</span><span class="pill">BigQuery</span><span class="pill">SQL</span><span class="pill">2024</span>
         </div>
-        <p>An end-to-end data pipeline on the Olist Brazilian e-commerce dataset, modeled into a star schema with staging, intermediate, and mart layers — the same BigQuery mart tables that feed into the Fintech LLM Analyst above.</p>
+        <p>An end-to-end data pipeline on the Olist Brazilian e-commerce dataset.</p>
+        <ul>
+          <li><strong>Architecture:</strong> Modeled into a star schema with staging, intermediate, and mart layers.</li>
+          <li><strong>Downstream:</strong> The same BigQuery mart tables feed into the Fintech LLM Analyst above.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/olist-analytics-dbt" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/olist-analytics-dbt" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>SEA Dataset Dataloader — SEACROWD</h3>
         <div class="project-pills">
           <span class="pill">HuggingFace</span><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Open Source</span><span class="pill">2023 — present</span>
         </div>
-        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets. Part of the research effort that led to the paper at EMNLP 2024.</p>
+        <p>Open-source contribution to SEACROWD — standardized HuggingFace dataloaders for Southeast Asian language datasets.</p>
+        <ul>
+          <li><strong>Impact:</strong> Part of the research effort that led to the paper at EMNLP 2024.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/SEACrowd" target="_blank">GitHub (SEACrowd org)</a>
+          <a href="https://github.com/SEACrowd" target="_blank" rel="noopener noreferrer">GitHub (SEACrowd org)</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Face Recognition — Computer Vision</h3>
         <div class="project-pills">
           <span class="pill">Python</span><span class="pill">OpenCV</span><span class="pill">2022</span>
         </div>
-        <p>A real-time face recognition system built from scratch — face detection, matching, and identity classification. The project where I first realized making a computer see things was way more interesting than expected.</p>
+        <p>A real-time face recognition system built from scratch.</p>
+        <ul>
+          <li><strong>Pipeline:</strong> Face detection, matching, and identity classification.</li>
+          <li><strong>Note:</strong> The project where I first realized making a computer see things was way more interesting than expected.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/face-recognition-computer-vision" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/face-recognition-computer-vision" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Twitter Sentiment Analysis — Football Fan Bases</h3>
         <div class="project-pills">
           <span class="pill">Python</span><span class="pill">NLP</span><span class="pill">Undergraduate Thesis</span><span class="pill">2023</span>
         </div>
-        <p>Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and FC Barcelona fan communities. Lexicon-based methods and ML classifiers on scraped Twitter data.</p>
+        <p>Comparative sentiment analysis of Indonesian Twitter discourse around Real Madrid and FC Barcelona fan communities.</p>
+        <ul>
+          <li><strong>Methods:</strong> Lexicon-based methods and ML classifiers on scraped Twitter data.</li>
+        </ul>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Stock Trading Robot</h3>
         <div class="project-pills">
           <span class="pill">LSTM</span><span class="pill">Python</span><span class="pill">Mathematical Modeling</span><span class="pill">2022</span>
         </div>
-        <p>An automated stock trading agent for a mathematical modeling course. Uses LSTM to predict stock prices up to ten days ahead and recommends buy, sell, or hold.</p>
+        <p>An automated stock trading agent built for a mathematical modeling course.</p>
+        <ul>
+          <li><strong>Model:</strong> LSTM predicts stock prices up to ten days ahead and recommends buy, sell, or hold.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/Stock-Trading-Robot" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/Stock-Trading-Robot" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 

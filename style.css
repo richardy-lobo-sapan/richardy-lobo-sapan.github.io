@@ -1,22 +1,27 @@
 /* ═══════════════════════════════════════════════════════════
    Richardy Lobo' Sapan — portfolio styles
    Shared by index.html and projects.html
+   Deep Space / High-Tech: dark navy, plasma-cyan accent, glass cards
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg:       #0a0a12;
-  --surface:  #12121e;
-  --surface2: #0f0f1a;
-  --text:     #f0ede8;
-  --muted:    #9a9ab0;
-  --subtle:   #84849e;
-  --border:   #26263a;
-  --border-d: #38384f;
-  --accent:   #c78a4a;
-  --accent-l: rgba(199,138,74,0.14);
-  --accent-d: #dba064;
-  --year-col: var(--accent);
-  --star:     #f5e6c8;
+  --bg:         #070B19;
+  --glass-bg:   rgba(15, 23, 42, 0.6);
+  --glass-hover:rgba(15, 23, 42, 0.75);
+  --border:     rgba(255,255,255,0.08);
+  --border-d:   rgba(255,255,255,0.18);
+  --text:       #E2E8F0;
+  --muted:      #94A3B8;
+  --subtle:     #7C8BA1;
+  --accent:     #38BDF8;
+  --accent-2:   #0EA5E9;
+  --accent-l:   rgba(56,189,248,0.12);
+  --accent-d:   #7DD3FC;
+  --chip-bg:    rgba(56,189,248,0.07);
+  --chip-border:rgba(56,189,248,0.22);
+  --year-col:   var(--accent);
+  --star:       207,232,255;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
@@ -25,15 +30,16 @@ html { scroll-behavior: smooth; }
 
 body {
   position: relative;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
   background:
-    radial-gradient(ellipse 60% 40% at 15% 8%,  rgba(108,84,168,0.14), transparent 60%),
-    radial-gradient(ellipse 50% 35% at 88% 28%, rgba(58,92,150,0.10), transparent 60%),
-    radial-gradient(ellipse 45% 30% at 50% 95%, rgba(199,138,74,0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 15% 8%,  rgba(56,189,248,0.09), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 88% 28%, rgba(99,102,241,0.08), transparent 60%),
+    radial-gradient(ellipse 45% 30% at 50% 95%, rgba(14,165,233,0.07), transparent 60%),
     var(--bg);
   color: var(--text);
   font-size: 14.5px;
   line-height: 1.78;
+  -webkit-font-smoothing: antialiased;
 }
 
 a { color: var(--accent-d); text-decoration: none; }
@@ -52,7 +58,7 @@ a:hover { color: var(--accent); text-decoration: underline; }
   top: 0;
   z-index: 1000;
   background: var(--accent);
-  color: #0a0a12;
+  color: #04121f;
   padding: 0.65rem 1.1rem;
   border-radius: 0 0 6px 0;
   font-family: var(--font-mono);
@@ -66,9 +72,9 @@ a:hover { color: var(--accent); text-decoration: underline; }
 
 code {
   font-size: 0.82em;
-  background: #1a1a28;
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
+  background: rgba(255,255,255,0.07);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
   color: var(--accent-d);
 }
 
@@ -86,13 +92,26 @@ section[id] { scroll-margin-top: 1.5rem; }
   pointer-events: none;
 }
 
+/* ─── SPACE OBJECTS (fixed, desktop-only decorative accents) ─── */
+.planet-decor, .moon-decor, .galaxy-decor {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+.planet-decor { bottom: -70px; right: -70px; }
+.moon-decor { top: -55px; left: -55px; }
+.galaxy-decor { top: 12%; right: -140px; }
+@media (max-width: 860px) {
+  .planet-decor, .moon-decor, .galaxy-decor { display: none; }
+}
+
 /* ─── FILM GRAIN (fixed, above everything, near-invisible) ─── */
 #grain {
   position: fixed;
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.03;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -109,7 +128,7 @@ section[id] { scroll-margin-top: 1.5rem; }
   gap: 3.5rem;
 }
 
-/* ─── SIDEBAR ─── */
+/* ─── SIDEBAR (glass, sticky on desktop) ─── */
 .sidebar {
   flex-shrink: 0;
   width: 220px;
@@ -117,9 +136,11 @@ section[id] { scroll-margin-top: 1.5rem; }
   top: 3rem;
   align-self: flex-start;
   text-align: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
   padding: 1.4rem 1rem 1.2rem;
 }
 
@@ -128,12 +149,12 @@ section[id] { scroll-margin-top: 1.5rem; }
   border-radius: 50%; object-fit: cover;
   display: block; margin: 0 auto 0.9rem;
   border: 2px solid var(--border-d);
-  background: #2a2a3a;
+  background: #16213a;
 }
 
 .sidebar h1 {
-  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
-  font-size: 1.05rem; font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 1.05rem; font-weight: 600;
   color: var(--text); line-height: 1.3;
   margin-bottom: 0.2rem;
 }
@@ -171,30 +192,33 @@ section[id] { scroll-margin-top: 1.5rem; }
 .socials a {
   display: flex; align-items: center; justify-content: center;
   width: 32px; height: 32px;
-  border: 1px solid var(--border); border-radius: 6px;
-  color: var(--subtle); background: var(--bg);
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--subtle); background: rgba(255,255,255,0.02);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .socials a:hover {
   color: var(--accent); border-color: var(--accent);
   background: var(--accent-l); text-decoration: none;
+  transform: translateY(-2px);
 }
 
 .socials a svg { width: 15px; height: 15px; fill: currentColor; display: block; }
 
-/* sidenav */
-.sidenav { list-style: none; border-top: 1px solid var(--border); padding-top: 0.9rem; text-align: left; }
-.sidenav li + li { margin-top: 0.25rem; }
-.sidenav a {
-  font-size: 0.78rem; color: var(--subtle);
-  display: block; padding: 0.1rem 0.2rem; border-radius: 4px;
-  transition: color 0.15s, background 0.12s;
+/* ─── UNIFIED NAV (single list, responsive: vertical on desktop, pill-scroller on mobile) ─── */
+.nav {
+  list-style: none;
+  border-top: 1px solid var(--border);
+  padding-top: 0.9rem;
+  text-align: left;
 }
-.sidenav a:hover { color: var(--accent); background: var(--accent-l); text-decoration: none; }
-
-/* mobile pill nav: hidden by default, shown only in the mobile layout below */
-.mobile-nav { display: none; }
+.nav li + li { margin-top: 0.25rem; }
+.nav a {
+  font-size: 0.78rem; color: var(--subtle);
+  display: block; padding: 0.15rem 0.3rem; border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.nav a:hover { color: var(--accent); background: var(--accent-l); text-decoration: none; }
 
 /* back-to-home (projects.html) */
 .back-link {
@@ -209,16 +233,18 @@ section[id] { scroll-margin-top: 1.5rem; }
 main { position: relative; z-index: 1; flex: 1; min-width: 0; counter-reset: section; }
 section {
   padding: 2rem 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.1rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
-section:nth-child(odd)  { background: var(--surface2); }
-section:nth-child(even) { background: var(--surface); }
 
 section h2 {
   counter-increment: section;
-  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
-  font-size: 1.15rem; font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 1.15rem; font-weight: 600;
   color: var(--text);
   padding-left: 0.9rem;
   border-left: 3px solid var(--accent);
@@ -233,13 +259,16 @@ section h2::before {
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
+.h2-row { display: flex; align-items: center; gap: 0.55rem; }
+.h2-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--accent); }
+.h2-icon circle, .h2-icon ellipse, .h2-icon path, .h2-icon rect { vector-effect: non-scaling-stroke; }
 
 p { color: var(--muted); margin-bottom: 0.8rem; font-size: 0.9rem; }
 p:last-child { margin-bottom: 0; }
 .resume-line { margin-top: 1rem; font-size: 0.85rem; color: var(--muted); }
 
 /* ─── SCROLL REVEAL ─── */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ─── TECH STACK ─── */
@@ -251,20 +280,22 @@ p:last-child { margin-bottom: 0; }
   color: var(--subtle); margin-bottom: 0.4rem;
 }
 .stack-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+/* ─── CHIPS (pill-shaped, tinted, used for stack + project tags) ─── */
 .pill {
   font-family: var(--font-mono);
   font-size: 0.7rem; font-weight: 500;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--chip-border);
+  background: var(--chip-bg);
   color: var(--muted);
   white-space: nowrap;
-  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 .pill:hover { background: var(--accent-l); border-color: var(--accent); color: var(--accent-d); }
 
-/* ─── FEATURED IN ─── */
+/* ─── FEATURED IN (glass) ─── */
 .featured-card {
   position: relative;
   overflow: hidden;
@@ -272,10 +303,12 @@ p:last-child { margin-bottom: 0; }
   gap: 0.75rem;
   padding: 0.75rem 0.9rem;
   margin-bottom: 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   text-decoration: none;
 }
 .featured-card::after,
@@ -284,7 +317,7 @@ p:last-child { margin-bottom: 0; }
   position: absolute;
   top: 0; left: -60%;
   width: 35%; height: 100%;
-  background: linear-gradient(75deg, transparent, rgba(245,230,200,0.10), transparent);
+  background: linear-gradient(75deg, transparent, rgba(56,189,248,0.12), transparent);
   transform: skewX(-20deg);
   pointer-events: none;
   transition: left 0.85s ease;
@@ -293,7 +326,8 @@ p:last-child { margin-bottom: 0; }
 .project-card:hover::after { left: 130%; }
 .featured-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(199,138,74,0.12);
+  box-shadow: 0 4px 20px rgba(56,189,248,0.16);
+  transform: translateY(-2px);
   text-decoration: none;
 }
 .featured-icon {
@@ -337,7 +371,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 50%;
   background: var(--bg);
   border: 2px solid var(--accent);
-  box-shadow: 0 0 0 3px var(--bg);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 8px rgba(56,189,248,0.5);
 }
 .exp-year {
   display: block;
@@ -346,40 +380,66 @@ p:last-child { margin-bottom: 0; }
   font-weight: 500; font-variant-numeric: tabular-nums;
   margin-bottom: 0.15rem;
 }
-.exp-text strong { font-weight: 500; color: var(--text); font-family: 'Spectral', Georgia, 'Times New Roman', serif; }
+.exp-text strong { font-weight: 600; color: var(--text); font-family: var(--font-sans); }
 
-/* ─── PROJECT CARDS ─── */
+/* ─── PROJECT CARDS (glass, lift + glow on hover) ─── */
 .project-card {
   position: relative;
   overflow: hidden;
   margin-bottom: 1rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--border);
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.1);
   /* dimmed accent at rest — with a dozen-plus cards on the page, a
      full-strength accent stripe on every one stops reading as a highlight.
      It brightens to full accent on hover instead. */
-  border-left: 3px solid rgba(199,138,74,0.45);
-  border-radius: 6px;
-  background: var(--surface);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  border-left: 3px solid rgba(56,189,248,0.45);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .project-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 10px rgba(199,138,74,0.12);
+  box-shadow: 0 4px 24px rgba(56,189,248,0.18);
+  transform: translateY(-2px);
 }
 .project-card h3 {
-  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
-  font-size: 0.95rem; font-weight: 500;
-  color: var(--text); margin-bottom: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text); margin-bottom: 0.35rem;
 }
-.project-card p { margin-bottom: 0.4rem; font-size: 0.875rem; }
+.project-card p { margin-bottom: 0.5rem; font-size: 0.875rem; }
 .project-card p:last-child { margin-bottom: 0; }
 
-.project-pills { display: flex; flex-wrap: wrap; gap: 0.28rem; margin-bottom: 0.45rem; }
+/* scannable bullet layout for project detail lists */
+.project-card ul {
+  list-style: none;
+  margin: 0.15rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.project-card li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.project-card li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.project-card li strong { color: var(--text); font-weight: 600; }
+.project-card ul:last-child { margin-bottom: 0; }
+
+.project-pills { display: flex; flex-wrap: wrap; gap: 0.32rem; margin-bottom: 0.5rem; }
 .project-pills .pill {
   font-size: 0.67rem;
-  padding: 0.12rem 0.45rem;
-  background: var(--bg);
+  padding: 0.16rem 0.55rem;
 }
 
 .project-links { font-size: 0.76rem; margin-top: 0.4rem; }
@@ -393,7 +453,7 @@ p:last-child { margin-bottom: 0; }
   border-left-style: solid;
   text-align: left;
 }
-.view-all-card:hover { background: var(--accent-l); text-decoration: none; }
+.view-all-card:hover { background: var(--glass-hover); text-decoration: none; }
 .view-all-card h3 { color: var(--accent-d); }
 .view-all-card p:last-child { color: var(--muted); }
 
@@ -405,29 +465,43 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.86rem; color: var(--muted);
 }
 .entries li:last-child { border-bottom: none; }
+/* Hanging-indent layout via flexbox: a fixed-width meta column (year + badge)
+   plus a body column that takes the rest of the row and wraps within its
+   own bounds — wrapped lines never depend on a text-indent offset lining up
+   with an ancestor's padding, so it can't overflow past a card's edge the
+   way the old negative-text-indent hack could on narrow viewports. */
 .entry-cite {
-  padding-left: 2.7rem;
-  text-indent: -2.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.6rem;
+  row-gap: 0.2rem;
+  align-items: baseline;
+}
+.entry-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.entry-body {
+  flex: 1 1 240px;
+  min-width: 0;
 }
 .entry-year {
-  display: inline-block;
-  width: 2.2rem;
   font-family: var(--font-mono);
   font-size: 0.74rem; color: var(--year-col);
   font-weight: 500; font-variant-numeric: tabular-nums;
-  text-indent: 0;
 }
 .entry-badge {
   display: inline-block;
   font-size: 0.63rem; font-weight: 600;
   letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 0.1rem 0.4rem; border-radius: 3px; margin-right: 0.4rem;
-  text-indent: 0;
+  padding: 0.1rem 0.45rem; border-radius: 9999px;
 }
-.b-award    { background: rgba(139,94,60,0.25); color: #d4956a; }
-.b-research { background: rgba(61,107,71,0.25); color: #7ec98a; }
-.b-press    { background: rgba(58,82,120,0.25); color: #7fa3d4; }
-.entries strong { font-family: 'Spectral', Georgia, 'Times New Roman', serif; font-weight: 500; color: var(--text); }
+.b-award    { background: rgba(217,119,6,0.18); color: #fbbf6a; }
+.b-research { background: rgba(16,185,129,0.16); color: #6ee7b7; }
+.b-press    { background: rgba(56,189,248,0.16); color: var(--accent-d); }
+.entries strong { font-family: var(--font-sans); font-weight: 600; color: var(--text); }
 
 /* ─── FOOTER ─── */
 footer {
@@ -490,9 +564,8 @@ footer {
     margin-top: 0.5rem;
   }
 
-  /* mobile pill nav */
-  .sidenav { display: none; }
-  .mobile-nav {
+  /* single .nav list becomes a horizontal pill-scroller on mobile */
+  .nav {
     display: flex !important;
     grid-column: 1 / -1;
     gap: 0.35rem;
@@ -504,25 +577,25 @@ footer {
     border-top: none;
     padding-top: 0;
   }
-  .mobile-nav::-webkit-scrollbar { display: none; }
-  .mobile-nav li { flex-shrink: 0; }
-  .mobile-nav li a {
+  .nav::-webkit-scrollbar { display: none; }
+  .nav li { flex-shrink: 0; margin-top: 0 !important; }
+  .nav li a {
     display: block;
     font-size: 0.7rem; font-weight: 500;
-    padding: 0.22rem 0.6rem;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--bg);
+    padding: 0.22rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid var(--chip-border);
+    background: var(--chip-bg);
     color: var(--muted);
     white-space: nowrap;
   }
-  .mobile-nav li a:hover {
+  .nav li a:hover {
     color: var(--accent); border-color: var(--accent);
     background: var(--accent-l); text-decoration: none;
   }
 
   main { padding: 0.5rem 0; }
-  section { padding: 1.2rem 1rem; margin-bottom: 0.4rem; border-radius: 0; }
+  section { padding: 1.2rem 1rem; margin-bottom: 0.6rem; border-radius: 0; }
 
   body { font-size: 13px; }
 
@@ -538,14 +611,14 @@ footer {
   height: 280px;
   width: 100%;
   background:
-    radial-gradient(ellipse 70% 60% at 25% 20%, rgba(108,84,168,0.35), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 80% 65%, rgba(199,138,74,0.22), transparent 50%),
+    radial-gradient(ellipse 70% 60% at 25% 20%, rgba(56,189,248,0.28), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 80% 65%, rgba(99,102,241,0.20), transparent 50%),
     var(--bg);
 }
 .mobile-hero-wrap::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,18,0.05) 0%, rgba(10,10,18,0.92) 100%);
+  background: linear-gradient(to bottom, rgba(7,11,25,0.05) 0%, rgba(7,11,25,0.92) 100%);
 }
 
 /* ─── BACK TO TOP ─── */
@@ -559,10 +632,10 @@ footer {
   border: none;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 14px rgba(199,138,74,0.45);
+  box-shadow: 0 4px 18px rgba(56,189,248,0.5);
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 0.25s, transform 0.25s;
+  transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
   z-index: 999;
 }
@@ -571,8 +644,8 @@ footer {
   transform: translateY(0);
   pointer-events: auto;
 }
-#back-to-top:hover { background: var(--accent-d); }
-#back-to-top svg { width: 16px; height: 16px; fill: #fff; display: block; }
+#back-to-top:hover { background: var(--accent-2); transform: translateY(-2px); }
+#back-to-top svg { width: 16px; height: 16px; fill: #04121f; display: block; }
 
 /* ─── ACCESSIBILITY: reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
@@ -580,14 +653,33 @@ footer {
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   #back-to-top { transition: none; }
   .featured-card::after, .project-card::after { display: none; }
+  .featured-card:hover, .project-card:hover, .socials a:hover, #back-to-top:hover { transform: none; }
   .tagline-cursor { animation: none; opacity: 1; }
 }
 
 /* ─── PRINT ─── */
 @media print {
-  #starfield, #grain, #back-to-top, .mobile-hero-wrap, .socials, .sidenav, .mobile-nav, .tagline, .skip-link { display: none !important; }
+  /* Most headings/labels/pills use var(--text)/var(--muted)/var(--accent)
+     directly (e.g. section h2, .sidebar h1, .project-card h3, .pill,
+     exp-year/entry-year via --year-col) rather than inheriting from body's
+     color. Overriding the custom properties themselves — not just `body` —
+     is what actually makes that text legible on printed white paper instead
+     of rendering near-invisible light-on-white. */
+  :root {
+    --text: #111827;
+    --muted: #334155;
+    --subtle: #475569;
+    --accent: #0c4a6e;
+    --accent-2: #0c4a6e;
+    --accent-d: #0369a1;
+  }
+  #starfield, #grain, .planet-decor, .moon-decor, .galaxy-decor, #back-to-top, .mobile-hero-wrap, .socials, .nav, .tagline, .skip-link { display: none !important; }
   body { background: #fff; color: #000; }
-  .sidebar, section, .project-card, .featured-card { background: #fff; border-color: #ccc; box-shadow: none; }
+  .sidebar, section, .project-card, .featured-card { background: #fff; border-color: #ccc; box-shadow: none; backdrop-filter: none; }
   a { color: #000; text-decoration: underline; }
   section h2::before { color: #555; }
+  /* badge backgrounds are translucent tints meant for a dark glass card —
+     on white paper they wash out to near-nothing and the light badge text
+     drops to ~1.3:1 contrast. Flatten to one neutral, legible treatment. */
+  .entry-badge { background: #e2e8f0; color: #1f2937; }
 }

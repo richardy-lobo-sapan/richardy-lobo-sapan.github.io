@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -32,6 +32,34 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <canvas id="starfield" aria-hidden="true"></canvas>
+
+<div class="planet-decor" aria-hidden="true">
+  <svg viewBox="0 0 200 200" width="260" height="260">
+    <ellipse cx="100" cy="100" rx="95" ry="26" transform="rotate(-18 100 100)" fill="none" stroke="#38bdf8" stroke-width="8" opacity="0.10"/>
+    <ellipse cx="100" cy="100" rx="95" ry="26" transform="rotate(-18 100 100)" fill="none" stroke="#7dd3fc" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="100" cy="100" r="46" fill="#0ea5e9" opacity="0.12"/>
+    <circle cx="100" cy="100" r="46" fill="none" stroke="#7dd3fc" stroke-width="1" opacity="0.3"/>
+  </svg>
+</div>
+
+<div class="moon-decor" aria-hidden="true">
+  <svg viewBox="0 0 140 140" width="170" height="170">
+    <circle cx="70" cy="70" r="55" fill="#94a3b8" opacity="0.10"/>
+    <circle cx="70" cy="70" r="55" fill="none" stroke="#cbd5e1" stroke-width="1" opacity="0.25"/>
+    <circle cx="52" cy="52" r="9" fill="#070b19" opacity="0.18"/>
+    <circle cx="86" cy="80" r="6" fill="#070b19" opacity="0.18"/>
+    <circle cx="62" cy="92" r="4" fill="#070b19" opacity="0.18"/>
+  </svg>
+</div>
+
+<div class="galaxy-decor" aria-hidden="true">
+  <svg viewBox="0 0 300 300" width="380" height="380">
+    <defs><filter id="galaxy-blur"><feGaussianBlur stdDeviation="18"/></filter></defs>
+    <ellipse cx="150" cy="150" rx="120" ry="65" transform="rotate(25 150 150)" fill="#6366f1" opacity="0.10" filter="url(#galaxy-blur)"/>
+    <ellipse cx="170" cy="140" rx="65" ry="36" transform="rotate(25 170 140)" fill="#38bdf8" opacity="0.09" filter="url(#galaxy-blur)"/>
+  </svg>
+</div>
+
 <div id="grain" aria-hidden="true"></div>
 
 <!-- Mobile hero — nebula band, mobile only via CSS -->
@@ -49,29 +77,30 @@
 
     <div class="socials">
       <!-- GitHub -->
-      <a href="https://github.com/richardy-lobo-sapan" target="_blank" title="GitHub">
+      <a href="https://github.com/richardy-lobo-sapan" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
         <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       </a>
       <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" title="LinkedIn">
+      <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
       <!-- Google Scholar -->
-      <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank" title="Google Scholar">
+      <a href="https://scholar.google.com/citations?hl=id&user=P-O_EnAAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar">
         <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/></svg>
       </a>
       <!-- ResearchGate -->
-      <a href="https://www.researchgate.net/profile/Richardy-Sapan" target="_blank" title="ResearchGate">
+      <a href="https://www.researchgate.net/profile/Richardy-Sapan" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate">
         <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.44 12.44 0 00-.365 3.123v.521h-1.99c-.026.56-.049 1.33-.049 1.877h1.973v7.82c-.05 1.928-.278 3.29-.69 4.094-.41.804-1.017 1.205-1.822 1.205-.61 0-1.161-.223-1.657-.67-.494-.448-.764-1.015-.81-1.703h-.08a3.43 3.43 0 01-.528 1.907c-.337.49-.752.855-1.245 1.1a3.44 3.44 0 01-1.6.365c-1.148 0-2.063-.435-2.746-1.304C4.35 19.516 4 18.282 4 16.683c0-1.618.388-2.9 1.163-3.845.775-.944 1.795-1.416 3.06-1.416.793 0 1.476.182 2.049.547.573.365.993.904 1.26 1.617h.065v-1.86h2.05v7.68c0 .597.127 1.063.38 1.396.253.334.613.5 1.08.5.54 0 .965-.216 1.278-.648.312-.432.468-1.026.468-1.78V9.766h2.087c.026-.547.049-1.317.049-1.877h-2.087V6.384c0-1.16.133-1.98.4-2.46.267-.48.707-.72 1.32-.72.357 0 .71.066 1.063.197l.5-1.79A5.4 5.4 0 0019.586 0zM8.4 13.444c-.633 0-1.13.277-1.493.83-.362.553-.543 1.356-.543 2.41 0 1.01.178 1.79.535 2.34.357.55.851.824 1.483.824.63 0 1.127-.275 1.49-.824.363-.55.545-1.33.545-2.34 0-1.054-.182-1.857-.545-2.41-.363-.553-.86-.83-1.472-.83z"/></svg>
       </a>
       <!-- Medium -->
-      <a href="https://medium.com/@richardylobosapan" target="_blank" title="Medium">
+      <a href="https://medium.com/@richardylobosapan" target="_blank" rel="noopener noreferrer" title="Medium" aria-label="Medium">
         <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
       </a>
     </div>
 
-    <!-- Desktop sidenav -->
-    <ul class="sidenav">
+    <!-- Unified nav — vertical list on desktop, horizontal pill-scroller on mobile (see .nav in style.css) -->
+    <ul class="nav">
+      <li><a href="#intro">About Me</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#interests">Interests</a></li>
       <li><a href="#stack">Tech Stack</a></li>
@@ -80,17 +109,6 @@
       <li><a href="#featured">Featured In</a></li>
       <li><a href="#projects">Selected Projects</a></li>
     </ul>
-
-    <!-- Mobile pill nav (hidden on desktop via CSS) -->
-    <ul class="mobile-nav">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#interests">Interests</a></li>
-      <li><a href="#stack">Tech Stack</a></li>
-      <li><a href="#outside">Outside Work</a></li>
-      <li><a href="#recognition">Awards</a></li>
-      <li><a href="#featured">Featured</a></li>
-      <li><a href="#projects">Selected</a></li>
-    </ul>
   </aside>
 
   <!-- ═══════════ MAIN ═══════════ -->
@@ -98,6 +116,7 @@
 
     <!-- INTRO -->
     <section id="intro" class="reveal">
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/><circle cx="10" cy="3" r="1.3" fill="currentColor" stroke="none"/></svg>About Me</span></h2>
       <p>
         I'm a data scientist and AI/ML engineer based in Jakarta, Indonesia — building systems at the
         intersection of language, data, and decisions that actually matter. My work spans predictive
@@ -106,21 +125,21 @@
         English. I also contribute to NLP research on Southeast Asian languages.
       </p>
       <p>
-        I studied Mathematics at <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>,
+        I studied Mathematics at <a href="https://math.sci-ui.id/en/" target="_blank" rel="noopener noreferrer">Universitas Indonesia</a>,
         graduating in 2023 — where I first realized that the most interesting problems live at the
         intersection of math, language, and human behavior. That conviction has shaped everything I've
         worked on since.
       </p>
       <p class="resume-line">
         You can take a look at my experience on my
-        <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank">LinkedIn</a>. ·
+        <a href="https://www.linkedin.com/in/richardylobosapan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>. ·
         Open for full-time AI/ML engineering and data science roles — feel free to reach out.
       </p>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="reveal">
-      <h2>Experience</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="10" rx="8" ry="4" transform="rotate(-20 10 10)"/><circle cx="16.8" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>Experience</span></h2>
       <ul class="exp-list">
         <li>
           <span class="exp-year">2025 — now</span>
@@ -128,19 +147,15 @@
         </li>
         <li>
           <span class="exp-year">2024</span>
-          <div class="exp-text"><strong>Data Analytics</strong> at <a href="https://www.banksaqu.com/" target="_blank">Bank Saqu / Bank Jasa Jakarta</a> (Astra &amp; WeLab Group)</div>
+          <div class="exp-text"><strong>Data Analytics</strong> at <a href="https://www.banksaqu.com/" target="_blank" rel="noopener noreferrer">Bank Saqu / Bank Jasa Jakarta</a> (Astra &amp; WeLab Group)</div>
         </li>
         <li>
           <span class="exp-year">2023 — now</span>
-          <div class="exp-text"><strong>NLP Research Contributor</strong> at <a href="https://seacrowd.github.io/" target="_blank">SEACROWD</a> — building open-source NLP resources for Southeast Asian languages</div>
+          <div class="exp-text"><strong>NLP Research Contributor</strong> at <a href="https://seacrowd.github.io/" target="_blank" rel="noopener noreferrer">SEACROWD</a> — building open-source NLP resources for Southeast Asian languages</div>
         </li>
         <li>
           <span class="exp-year">2023</span>
-          <div class="exp-text"><strong>Digital Consulting Analyst</strong> at Advisia</div>
-        </li>
-        <li>
-          <span class="exp-year">2023</span>
-          <div class="exp-text"><strong>Product Operations Intern</strong> at <a href="https://deall.com/" target="_blank">Deall Jobs</a> (YC 2022)</div>
+          <div class="exp-text"><strong>Product Operations Intern</strong> at <a href="https://deall.com/" target="_blank" rel="noopener noreferrer">Deall Jobs</a> (YC 2022)</div>
         </li>
         <li>
           <span class="exp-year">2022 — 23</span>
@@ -148,26 +163,30 @@
         </li>
         <li>
           <span class="exp-year">2022</span>
+          <div class="exp-text"><strong>Digital Consulting Analyst</strong> at Advisia</div>
+        </li>
+        <li>
+          <span class="exp-year">2022</span>
           <div class="exp-text"><strong>Big Data Analytics Intern</strong> at Kimia Farma — project-based intern with Rakamin</div>
         </li>
         <li>
           <span class="exp-year">2022</span>
-          <div class="exp-text"><strong>Business Analyst Intern</strong> at <a href="https://dailysocial.id/" target="_blank">DailySocial.id</a></div>
+          <div class="exp-text"><strong>Business Analyst Intern</strong> at <a href="https://dailysocial.id/" target="_blank" rel="noopener noreferrer">DailySocial.id</a></div>
         </li>
         <li>
           <span class="exp-year">2021 — 22</span>
-          <div class="exp-text"><strong>Product Management Intern</strong> at <a href="https://sejutacita.id/" target="_blank">SejutaCita</a> (YC 2022)</div>
+          <div class="exp-text"><strong>Product Management Intern</strong> at <a href="https://sejutacita.id/" target="_blank" rel="noopener noreferrer">SejutaCita</a> (YC 2022)</div>
         </li>
         <li>
           <span class="exp-year">2019 — 23</span>
-          <div class="exp-text">🎓 <strong>B.Sc. Mathematics</strong> — <a href="https://math.sci-ui.id/en/" target="_blank">Universitas Indonesia</a>. Thesis on NLP &amp; Twitter sentiment analysis of football fan bases.</div>
+          <div class="exp-text">🎓 <strong>B.Sc. Mathematics</strong> — <a href="https://math.sci-ui.id/en/" target="_blank" rel="noopener noreferrer">Universitas Indonesia</a>. Thesis on NLP &amp; Twitter sentiment analysis of football fan bases.</div>
         </li>
       </ul>
     </section>
 
     <!-- INTERESTS -->
     <section id="interests" class="reveal">
-      <h2>Interests</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="currentColor" stroke="none"><path d="M10 2 L11.3 8.7 L18 10 L11.3 11.3 L10 18 L8.7 11.3 L2 10 L8.7 8.7 Z"/></svg>Interests</span></h2>
       <p>
         I'm drawn to <strong>natural language processing</strong> — specifically how we can build models
         that understand the nuances of Southeast Asian languages, which are still deeply underrepresented
@@ -198,7 +217,7 @@
 
     <!-- TECH STACK -->
     <section id="stack" class="reveal">
-      <h2>Tech Stack</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 L10 5 L15 15 Z"/><circle cx="5" cy="15" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.3" fill="currentColor" stroke="none"/><circle cx="10" cy="5" r="1.3" fill="currentColor" stroke="none"/></svg>Tech Stack</span></h2>
 
       <div class="stack-group">
         <div class="stack-label">Languages</div>
@@ -265,12 +284,12 @@
 
     <!-- OUTSIDE WORK -->
     <section id="outside" class="reveal">
-      <h2>Outside of Work</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="currentColor" stroke="none"><path d="M13 3.2a7 7 0 1 0 0 13.6 8.4 8.4 0 0 1 0-13.6Z"/></svg>Outside of Work</span></h2>
       <p>
         I play a lot of games — and I mean a lot. My range is embarrassingly wide: one moment I'm sweating
         in <strong>CS</strong> or grinding ranked in <strong>MLBB</strong>, the next I'm in
         <strong>Roblox</strong> without a hint of shame. A big part of what I play these days is honestly
-        influenced by <a href="https://www.youtube.com/@WindahBasudara" target="_blank">Windah Basudara</a>
+        influenced by <a href="https://www.youtube.com/@WindahBasudara" target="_blank" rel="noopener noreferrer">Windah Basudara</a>
         — if he touches it, there's a good chance I end up trying it.
       </p>
       <p>
@@ -288,40 +307,46 @@
 
     <!-- AWARDS & RESEARCH -->
     <section id="recognition" class="reveal">
-      <h2>Awards &amp; Research</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7.5" r="4.5"/><path d="M7 11.3 L5.3 17.5 L10 15 L14.7 17.5 L13 11.3"/></svg>Awards &amp; Research</span></h2>
       <ul class="entries">
         <li class="entry-cite">
-          <span class="entry-year">2025</span><span class="entry-badge b-research">Research</span><strong>SEA-VL: Multicultural Vision-Language Dataset for Southeast Asia.</strong>
+          <span class="entry-meta"><span class="entry-year">2025</span><span class="entry-badge b-research">Research</span></span>
+          <span class="entry-body"><strong>SEA-VL: Multicultural Vision-Language Dataset for Southeast Asia.</strong>
           Co-author. Cahyawijaya et al., <em>ACL 2025 (Long Papers)</em>. Contributed to dataset preprocessing and documentation.
-          <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank">[ACL Anthology]</a>
+          <a href="https://aclanthology.org/2025.acl-long.916/" target="_blank" rel="noopener noreferrer">[ACL Anthology]</a></span>
         </li>
         <li class="entry-cite">
-          <span class="entry-year">2023</span><span class="entry-badge b-award">Award</span><strong>Most Outstanding Student — Mathematics Dept., UI.</strong>
-          Recognized out of 600+ students.
+          <span class="entry-meta"><span class="entry-year">2023</span><span class="entry-badge b-award">Award</span></span>
+          <span class="entry-body"><strong>Most Outstanding Student — Mathematics Dept., UI.</strong>
+          Recognized out of 600+ students.</span>
         </li>
         <li class="entry-cite">
-          <span class="entry-year">2022</span><span class="entry-badge b-award">Award</span><strong>1st Runner Up — ASEAN Data Science Challenge 2022.</strong>
-          Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.
+          <span class="entry-meta"><span class="entry-year">2022</span><span class="entry-badge b-award">Award</span></span>
+          <span class="entry-body"><strong>1st Runner Up — ASEAN Data Science Challenge 2022.</strong>
+          Proposed GetHired, a platform for youth employment readiness. Competed against 200+ teams.</span>
         </li>
         <li class="entry-cite">
-          <span class="entry-year">2022</span><span class="entry-badge b-award">Award</span><strong>1st Place — Ganesha Student Innovation Summit Challenge 2022.</strong>
-          Outperformed 100+ individual participants and 10 finalist teams.
+          <span class="entry-meta"><span class="entry-year">2022</span><span class="entry-badge b-award">Award</span></span>
+          <span class="entry-body"><strong>1st Place — Ganesha Student Innovation Summit Challenge 2022.</strong>
+          Outperformed 100+ individual participants and 10 finalist teams.</span>
         </li>
         <li class="entry-cite">
-          <span class="entry-year">2021</span><span class="entry-badge b-award">Award</span><strong>1st Winner — International Youth Summit for Renewable Energy 2021.</strong>
-          Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.
+          <span class="entry-meta"><span class="entry-year">2021</span><span class="entry-badge b-award">Award</span></span>
+          <span class="entry-body"><strong>1st Winner — International Youth Summit for Renewable Energy 2021.</strong>
+          Waste to Energy Challenge. Awarded USD 1,800. Outperformed 200+ participants.</span>
         </li>
         <li class="entry-cite">
-          <span class="entry-year">2021</span><span class="entry-badge b-award">Scholarship</span><strong>Dato' Dr. Low Tuck Kwong Scholarship.</strong>
+          <span class="entry-meta"><span class="entry-year">2021</span><span class="entry-badge b-award">Scholarship</span></span>
+          <span class="entry-body"><strong>Dato' Dr. Low Tuck Kwong Scholarship.</strong></span>
         </li>
       </ul>
     </section>
 
     <!-- FEATURED IN -->
     <section id="featured" class="reveal">
-      <h2>Featured In</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18V9.5"/><path d="M6.2 9.5a3.8 3.8 0 0 1 7.6 0"/><path d="M3.4 6.3a8 8 0 0 1 13.2 0"/><circle cx="10" cy="9.3" r="1.1" fill="currentColor" stroke="none"/></svg>Featured In</span></h2>
 
-      <a class="featured-card" href="https://tf.ugm.ac.id/2021/10/07/juara-1-international-youth-summit-for-renewable-energy-iysre-tahun-2021/" target="_blank">
+      <a class="featured-card" href="https://tf.ugm.ac.id/2021/10/07/juara-1-international-youth-summit-for-renewable-energy-iysre-tahun-2021/" target="_blank" rel="noopener noreferrer">
         <div class="featured-icon">
           <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         </div>
@@ -331,7 +356,7 @@
         </div>
       </a>
 
-      <a class="featured-card" href="https://pressrelease.kontan.co.id/news/asean-foundation-dan-sap-mengu..." target="_blank">
+      <a class="featured-card" href="https://pressrelease.kontan.co.id/news/asean-foundation-dan-sap-mengumumkan-juara-nasional-asean-data-science-explorer" target="_blank" rel="noopener noreferrer">
         <div class="featured-icon">
           <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         </div>
@@ -341,7 +366,7 @@
         </div>
       </a>
 
-      <a class="featured-card" href="https://investor.id/it-and-telecommunication/304976/tiga-tim-dari-itb-dan-ui-da..." target="_blank">
+      <a class="featured-card" href="https://investor.id/it-and-telecommunication/304976/tiga-tim-dari-itb-dan-ui-jadi-juara-asean-data-science-explorer" target="_blank" rel="noopener noreferrer">
         <div class="featured-icon">
           <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         </div>
@@ -354,78 +379,104 @@
 
     <!-- SELECTED PROJECTS -->
     <section id="projects" class="reveal">
-      <h2>Selected Projects</h2>
+      <h2><span class="h2-row"><svg class="h2-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.2c2.3 2 3.3 5.2 3.3 8 0 1.9-1 3.4-3.3 5.3-2.3-1.9-3.3-3.4-3.3-5.3 0-2.8 1-6 3.3-8Z"/><circle cx="10" cy="8" r="1.2" fill="currentColor" stroke="none"/><path d="M7.3 13l-1.8 3.2M12.7 13l1.8 3.2"/></svg>Selected Projects</span></h2>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>RAG Evaluation &amp; Optimization System</h3>
         <div class="project-pills">
           <span class="pill">Ragas</span><span class="pill">LangChain</span><span class="pill">ChromaDB</span><span class="pill">Groq</span><span class="pill">GitHub Actions</span><span class="pill">2026</span>
         </div>
-        <p>An automated evaluation harness that scores RAG pipelines on Ragas' four metrics (faithfulness, answer relevancy, context recall, context precision) across 7 configs, adds a second LLM-as-judge layer, and wires both into a GitHub Actions quality gate that fails a build like a broken unit test. Applied end-to-end to two of my own shipped RAG systems — DocChat and LLM API Production — with live CI gates on both repos. Chasing an eval score gap between the two projects led to root-causing a stale Chroma index (chunks silently duplicated on re-index) rather than a real architecture difference — a reminder to read the actual retrieved chunks before trusting an aggregate metric table.</p>
+        <p>An automated evaluation harness that scores RAG pipelines across multiple metrics and wires them into a GitHub Actions quality gate.</p>
+        <ul>
+          <li><strong>Architecture:</strong> Scores based on faithfulness, answer relevancy, context recall, and context precision across 7 configs, with a second LLM-as-judge layer.</li>
+          <li><strong>Key Insight:</strong> Chasing an eval score gap led to root-causing a stale Chroma index (chunks silently duplicated on re-index) rather than a real architecture difference.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/rag-evaluation-system" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/rag-evaluation-system" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Credit Risk Decision Engine</h3>
         <div class="project-pills">
           <span class="pill">Python</span><span class="pill">LightGBM</span><span class="pill">WOE / IV</span><span class="pill">SHAP</span><span class="pill">Streamlit</span><span class="pill">2026</span>
         </div>
-        <p>An end-to-end credit risk system on the Home Credit Default Risk dataset (307K applicants): PD modeling (WOE/Logistic Regression vs. LightGBM), risk grading, SHAP explainability, expected loss, portfolio analytics, stress testing, and PSI-based drift monitoring — wrapped in a 4-page dashboard. The sharpest lesson: <code>is_unbalance=True</code> barely moved ranking metrics but pushed the mean predicted default probability to 5x the true base rate, which would have made every downstream Expected Loss figure 5x too high.</p>
+        <p>An end-to-end credit risk system built on a 307K-applicant dataset, wrapped in a 4-page interactive dashboard.</p>
+        <ul>
+          <li><strong>Core Models:</strong> PD modeling (WOE/Logistic Regression vs. LightGBM) and risk grading.</li>
+          <li><strong>Features:</strong> SHAP explainability, expected loss calculations, portfolio analytics, stress testing, and PSI-based drift monitoring.</li>
+          <li><strong>Key Insight:</strong> Discovered that setting <code>is_unbalance=True</code> barely moved ranking metrics but spiked predicted default probability by 5x—which would have catastrophically inflated downstream Expected Loss figures.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/credit-risk-engine" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/credit-risk-engine" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Document Intelligence RAG System</h3>
         <div class="project-pills">
           <span class="pill">FastAPI</span><span class="pill">Postgres</span><span class="pill">pgvector</span><span class="pill">Groq</span><span class="pill">Langfuse</span><span class="pill">2026</span>
         </div>
-        <p>RAG over mixed-format internal documents — PDFs, Word docs, slide decks, spreadsheets, CSVs — where every answer cites its exact source down to the page, slide, or row range. Structure-aware chunking per format, local embeddings, Postgres/pgvector retrieval, and full Langfuse tracing on every query.</p>
+        <p>RAG over mixed-format internal documents, where every answer cites its exact source down to the page, slide, or row range.</p>
+        <ul>
+          <li><strong>Sources:</strong> PDFs, Word docs, slide decks, spreadsheets, and CSVs.</li>
+          <li><strong>Architecture:</strong> Structure-aware chunking per format, local embeddings, Postgres/pgvector retrieval, and full Langfuse tracing on every query.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/doc-intel-rag" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/doc-intel-rag" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>Resilient Document Extraction Engine — VLM Pipeline</h3>
         <div class="project-pills">
           <span class="pill">Groq</span><span class="pill">Llama Vision</span><span class="pill">GPT-4o</span><span class="pill">OpenCV</span><span class="pill">Pydantic</span><span class="pill">2026</span>
         </div>
-        <p>A production-minded VLM pipeline for extracting structured data from receipts — Groq Llama vision as the primary extractor with a GPT-4o fallback, plus a self-healing Pydantic schema that flags arithmetic inconsistencies instead of hard-failing. Naive downscaling to cut inference cost tanked accuracy on right-aligned totals by 22%; an OpenCV multi-contour crop step recovered nearly all of it at the same resolution.</p>
+        <p>A production-minded VLM pipeline for extracting structured data from receipts.</p>
+        <ul>
+          <li><strong>Pipeline:</strong> Groq Llama Vision as the primary extractor with a GPT-4o fallback.</li>
+          <li><strong>Reliability:</strong> A self-healing Pydantic schema flags arithmetic inconsistencies instead of hard-failing.</li>
+          <li><strong>Key Insight:</strong> Naive downscaling to cut inference cost tanked accuracy on right-aligned totals by 22%; an OpenCV multi-contour crop step recovered nearly all of it at the same resolution.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/doc-extraction" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/doc-extraction" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>text2sql-finetune — QLoRA Fine-Tune for Fintech SQL</h3>
         <div class="project-pills">
           <span class="pill">QLoRA</span><span class="pill">Unsloth</span><span class="pill">Qwen2.5-Coder</span><span class="pill">2026</span>
         </div>
-        <p>Fine-tuning a sub-3B model (Qwen2.5-Coder-1.5B) for fintech text-to-SQL with QLoRA, evaluated strictly on live SQLite execution accuracy rather than textual similarity. Both base and fine-tuned models hit 0% execution accuracy — but for opposite reasons: the base model buried valid SQL in chatty prose, while the fine-tune over-complicated simple queries after inheriting the training set's bias toward multi-table joins.</p>
+        <p>Fine-tuning a sub-3B model (Qwen2.5-Coder-1.5B) for fintech text-to-SQL with QLoRA.</p>
+        <ul>
+          <li><strong>Evaluation:</strong> Scored strictly on live SQLite execution accuracy rather than textual similarity.</li>
+          <li><strong>Key Insight:</strong> Both base and fine-tuned models hit 0% execution accuracy — but for opposite reasons: the base model buried valid SQL in chatty prose, while the fine-tune over-complicated simple queries after inheriting the training set's bias toward multi-table joins.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/text2sql-finetune" target="_blank">GitHub</a>
+          <a href="https://github.com/richardy-lobo-sapan/text2sql-finetune" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card reveal">
         <h3>P4 · LLM API — Production Backend</h3>
         <div class="project-pills">
           <span class="pill">FastAPI</span><span class="pill">Gemini</span><span class="pill">ChromaDB</span><span class="pill">Langfuse</span><span class="pill">Supabase</span><span class="pill">Railway</span><span class="pill">2025</span>
         </div>
-        <p>A production-grade LLM API with RAG, persistent chat history (Supabase), and full observability via Langfuse tracing — every model call logged, inspectable, and debuggable. The gap between "works in a notebook" and "works in production" is mostly observability. This project closed that gap.</p>
+        <p>A production-grade LLM API with RAG, persistent chat history, and full observability.</p>
+        <ul>
+          <li><strong>Observability:</strong> Every model call logged via Langfuse tracing — inspectable and debuggable, not a black box.</li>
+          <li><strong>Key Insight:</strong> The gap between "works in a notebook" and "works in production" is mostly observability — this project closed that gap.</li>
+        </ul>
         <div class="project-links">
-          <a href="https://github.com/richardy-lobo-sapan/llm-api-production" target="_blank">GitHub</a>
-          <a href="https://llm-api-production-production.up.railway.app/docs" target="_blank">Live API</a>
+          <a href="https://github.com/richardy-lobo-sapan/llm-api-production" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://llm-api-production-production.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API</a>
         </div>
       </div>
 
-      <a class="project-card view-all-card" href="projects.html">
+      <a class="project-card view-all-card reveal" href="projects.html">
         <h3>View All Projects →</h3>
-        <p>11 more projects spanning production LLM systems, applied ML, NLP research, and early work.</p>
+        <p>12 more projects spanning production LLM systems, applied ML, NLP research, and early work.</p>
       </a>
 
     </section>
